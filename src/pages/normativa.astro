@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageDraft from '../components/PageDraft.astro';
+---
+
+<BaseLayout
+  title="Normativa PCI | RIPCI, CTE y normas UNE explicadas"
+  description="Borrador de la página Normativa para construir autoridad SEO informacional y apoyo comercial."
+>
+  <PageDraft
+    eyebrow="Normativa"
+    title="Normativa PCI explicada para responsables técnicos y de negocio"
+    summary="Esta sección será el pilar informacional. Debe traducir normativa compleja a decisiones accionables para gerencia, mantenimiento y prevención, sin perder rigor técnico."
+    focus="Busca captar intención informacional de alto volumen y convertirla en demanda comercial cualificada: usuarios que buscan “qué exige el RIPCI”, “frecuencia de revisiones” o “obligaciones PCI por actividad”."
+    sections={[
+      {
+        title: 'Guías prioritarias',
+        text: 'Crear contenidos estructurados sobre RIPCI, CTE DB-SI y normas UNE más consultadas, con ejemplos prácticos y checklist descargable.',
+      },
+      {
+        title: 'SEO semántico',
+        text: 'Usar preguntas frecuentes reales, glosario y comparativas de requisitos para capturar long tail y featured snippets en búsquedas de normativa.',
+      },
+      {
+        title: 'Puente a conversión',
+        text: 'Cerrar cada guía con recomendaciones de actuación y CTA consultivo: “Revisar cumplimiento de mi instalación”.',
+      },
+      {
+        title: 'Autoridad de marca',
+        text: 'Referenciar experiencia del grupo, certificaciones y actualización constante de contenido como señal de confianza para usuarios y buscadores.',
+      },
+    ]}
+  />
+</BaseLayout>

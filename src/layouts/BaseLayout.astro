@@ -1,0 +1,34 @@
+---
+import Nav from '../components/Nav.astro';
+import '../styles.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="container py-8 text-sm text-slate-600">
+        <p>GEP Protect · Grupo GEP · Borrador estratégico SEO/CRO para lanzamiento.</p>
+      </div>
+    </footer>
+  </body>
+</html>

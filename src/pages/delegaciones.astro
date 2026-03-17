@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageDraft from '../components/PageDraft.astro';
+---
+
+<BaseLayout
+  title="Delegaciones | Cobertura local de GEP Protect"
+  description="Borrador de la página Delegaciones para estrategia SEO local y captación por zona."
+>
+  <PageDraft
+    eyebrow="Delegaciones"
+    title="Cobertura local para una respuesta PCI cercana y rápida"
+    summary="Esta página mostrará dónde opera GEP Protect y servirá de hub para futuras landings locales por ciudad/provincia, clave para captación de demanda geolocalizada."
+    focus="Objetivo SEO local: captar búsquedas como “empresa PCI en Madrid” o “mantenimiento contra incendios Barcelona”, combinando proximidad operativa y autoridad del grupo."
+    sections={[
+      {
+        title: 'Mapa y áreas de cobertura',
+        text: 'Visualizar delegaciones activas, radios de actuación y tiempos de respuesta estimados para resolver la duda principal de disponibilidad.',
+      },
+      {
+        title: 'Plantilla de página local',
+        text: 'Cada delegación futura debe incluir servicios, sectores, normativa relevante, casos cercanos y datos de contacto local con schema LocalBusiness.',
+      },
+      {
+        title: 'Consistencia de marca',
+        text: 'Mantener tono y diseño del ecosistema GEP Group para transmitir continuidad y evitar percepción de microsite aislado.',
+      },
+      {
+        title: 'Conversión local',
+        text: 'CTA diferenciada para visita técnica en zona y llamada directa a equipo de delegación cuando proceda.',
+      },
+    ]}
+  />
+</BaseLayout>

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageDraft from '../components/PageDraft.astro';
+---
+
+<BaseLayout
+  title="Sectores | Soluciones PCI por tipo de negocio"
+  description="Borrador de la página Sectores de GEP Protect para captación SEO por verticales de cliente."
+>
+  <PageDraft
+    eyebrow="Sectores"
+    title="Soluciones de protección contra incendios adaptadas a cada sector"
+    summary="Esta página debe demostrar que GEP Protect no vende solo producto, sino soluciones sectoriales. El objetivo es hablar el idioma operativo de cada vertical (industrial, logístico, comunidades, hotelero, retail, etc.)."
+    focus="Capta intención de búsqueda sectorial, por ejemplo “PCI para naves industriales” o “mantenimiento contra incendios en hoteles”, mejorando relevancia y conversión frente a páginas genéricas."
+    sections={[
+      {
+        title: 'Narrativa por vertical',
+        text: 'Para cada sector: riesgos típicos, normativa más crítica, necesidades de operación y formato de servicio recomendado (preventivo, 24/7, auditoría, renovación).',
+      },
+      {
+        title: 'Casuística real',
+        text: 'Incluir ejemplos de incidencias evitadas, tiempos de implantación y resultados de cumplimiento para reforzar autoridad y facilitar decisiones rápidas.',
+      },
+      {
+        title: 'Conexión con contenido pilar',
+        text: 'Cada sector enlaza a servicios concretos, artículos de normativa y casos de éxito, creando un clúster SEO sólido y fácil de escalar.',
+      },
+      {
+        title: 'Conversión contextual',
+        text: 'CTA con lenguaje sectorial: “Evaluar riesgos de mi planta”, “Auditar mi comunidad”, “Plan PCI para mi cadena hotelera”.',
+      },
+    ]}
+  />
+</BaseLayout>

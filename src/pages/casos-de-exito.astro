@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageDraft from '../components/PageDraft.astro';
+---
+
+<BaseLayout
+  title="Casos de éxito | Proyectos reales de protección contra incendios"
+  description="Borrador de la página Casos de éxito orientada a confianza y cierre comercial."
+>
+  <PageDraft
+    eyebrow="Casos de éxito"
+    title="Proyectos reales que demuestran impacto en seguridad y cumplimiento"
+    summary="Esta página debe convertirse en activo de conversión. Presentará historias reales de implantación y mantenimiento PCI con métricas que validen resultados y capacidad de ejecución."
+    focus="Apoya búsquedas de validación (“empresa PCI fiable”, “referencias mantenimiento contra incendios”) y acelera cierres al reducir percepción de riesgo antes del contacto comercial."
+    sections={[
+      {
+        title: 'Formato de caso recomendado',
+        text: 'Problema inicial, alcance técnico, solución implementada, normativa cubierta y resultados medibles (plazo, incidencias, disponibilidad).',
+      },
+      {
+        title: 'Segmentación por sector',
+        text: 'Etiquetar casos por vertical y tipo de servicio para que funcionen como contenido SEO y como argumento de venta en reuniones.',
+      },
+      {
+        title: 'Prueba social',
+        text: 'Incorporar testimonios, logos autorizados y datos verificables para reforzar credibilidad sin sobrecargar visualmente la página.',
+      },
+      {
+        title: 'Ruta de conversión',
+        text: 'CTA tras cada caso para solicitar una evaluación similar, enlazando directamente a contacto con formulario pre-rellenado por sector.',
+      },
+    ]}
+  />
+</BaseLayout>

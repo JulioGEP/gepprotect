@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageDraft from '../components/PageDraft.astro';
+---
+
+<BaseLayout
+  title="Servicios PCI | Instalación, mantenimiento y soluciones técnicas"
+  description="Borrador de la página de Servicios de GEP Protect, orientada a intención transaccional en protección contra incendios."
+>
+  <PageDraft
+    eyebrow="Servicios"
+    title="Servicios PCI orientados a cumplimiento, continuidad y respuesta rápida"
+    summary="Esta página explica el catálogo de servicios de GEP Protect con enfoque comercial y técnico. Debe ordenar las soluciones por intención de compra para que cada servicio pueda escalar después como landing específica SEO."
+    focus="El foco principal es captar búsquedas transaccionales tipo “mantenimiento PCI”, “instalación contra incendios”, “sistemas de detección” o “empresa PCI en [ciudad]”, alineando cada bloque con una futura URL dedicada."
+    sections={[
+      {
+        title: 'Arquitectura de servicios',
+        text: 'Presentación de líneas clave: detección, extinción automática, BIES/hidrantes, señalización y mantenimiento preventivo-correctivo, con mini-resumen de problema que resuelve cada una.',
+      },
+      {
+        title: 'Enfoque por beneficio de negocio',
+        text: 'Cada servicio debe conectar con impacto real: menor riesgo operativo, cumplimiento auditado, reducción de incidencias y trazabilidad documental para inspecciones.',
+      },
+      {
+        title: 'Contenido SEO recomendado',
+        text: 'Añadir FAQs por servicio, tiempos de actuación, normativa aplicable y zonas de cobertura. Preparado para enlazar internamente con Sector, Normativa y Delegaciones.',
+      },
+      {
+        title: 'CTAs de alta intención',
+        text: 'Llamadas a acción por bloque: “Quiero revisar mi mantenimiento”, “Solicitar visita técnica” y “Recibir propuesta” según fase del embudo.',
+      },
+    ]}
+  />
+</BaseLayout>
