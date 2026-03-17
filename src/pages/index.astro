@@ -1,34 +1,60 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageDraft from '../components/PageDraft.astro';
+
+const quickLinks = [
+  {
+    title: 'Servicios PCI',
+    href: '/servicios',
+    text: 'Instalación, mantenimiento y mejora continua de sistemas de protección contra incendios.',
+  },
+  {
+    title: 'Sectores',
+    href: '/sectores',
+    text: 'Soluciones específicas para industria, logística, retail, hotelero y comunidades.',
+  },
+  {
+    title: 'Normativa',
+    href: '/normativa',
+    text: 'Guías prácticas de RIPCI, CTE y normas UNE para tomar decisiones con seguridad.',
+  },
+  {
+    title: 'Contacto',
+    href: '/contacto',
+    text: 'Solicita inspección técnica, mantenimiento preventivo o propuesta personalizada.',
+  },
+];
 ---
 
 <BaseLayout
-  title="GEP Protect | Protección contra incendios para empresas y sectores críticos"
-  description="Borrador de la landing principal de GEP Protect orientada a captación SEO transaccional e informacional de servicios PCI."
+  title="GEP Protect | Protección contra incendios para empresas"
+  description="Base de diseño de GEP Protect adaptada a la guía de marca GEPCO Formación y al estilo visual del ecosistema del grupo."
 >
-  <PageDraft
-    eyebrow="Landing principal"
-    title="GEP Protect: seguridad PCI para empresas que no pueden parar"
-    summary="Esta landing es el punto de entrada principal de tráfico cualificado. Debe explicar quiénes somos dentro de GEP Group, qué resolvemos (instalación, mantenimiento y cumplimiento PCI) y por qué somos una opción fiable para entornos exigentes."
-    focus="Aquí se captura intención híbrida: búsquedas de marca (GEP Protect / GEP Group), búsquedas transaccionales amplias (empresa contra incendios, mantenimiento PCI) y búsquedas de validación (certificaciones, experiencia sectorial y tiempos de respuesta)."
-    sections={[
-      {
-        title: 'Mensaje above the fold',
-        text: 'Titular claro con propuesta de valor + cobertura geográfica + garantía de cumplimiento RIPCI/UNE. Subtitular breve reforzando continuidad de negocio y reducción de riesgo legal.',
-      },
-      {
-        title: 'Prueba de confianza del grupo',
-        text: 'Módulo de credibilidad con conexión explícita a la identidad visual y reputacional de GEP Group y enlaces a marcas hermanas para transmitir solidez corporativa.',
-      },
-      {
-        title: 'Bloque de acceso rápido al menú de intención',
-        text: 'Tarjetas a Servicios, Sectores, Normativa, Casos de éxito, Delegaciones y Contacto para repartir autoridad interna y guiar tanto al usuario técnico como al decisor de compra.',
-      },
-      {
-        title: 'Conversión principal',
-        text: 'CTA primario a “Solicitar inspección PCI” y CTA secundario a llamada directa. Formulario corto (empresa, ubicación, necesidad) para maximizar leads sin fricción.',
-      },
-    ]}
-  />
+  <section class="container py-14 sm:py-20">
+    <p class="brand-eyebrow">Grupo GEP · Seguridad PCI</p>
+    <h1 class="mt-4 max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+      Protección contra incendios con estética de marca unificada para todo el ecosistema GEP.
+    </h1>
+    <p class="mt-6 max-w-3xl text-lg text-slate-700">
+      Esta base visual toma como referencia <strong>gepcoformacion.es</strong> para definir color principal,
+      jerarquía tipográfica, uso de bloques limpios y llamadas a la acción en rojo corporativo.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a href="/contacto" class="brand-button">Solicitar inspección PCI</a>
+      <a href="/servicios" class="rounded-full border border-red-200 px-5 py-2.5 text-sm font-semibold text-[#e1062c] transition hover:bg-red-50">Ver servicios</a>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="grid gap-5 sm:grid-cols-2">
+      {quickLinks.map((item) => (
+        <article class="brand-card">
+          <h2 class="text-xl font-bold text-slate-900">{item.title}</h2>
+          <p class="mt-3 text-sm leading-6 text-slate-700">{item.text}</p>
+          <a href={item.href} class="mt-4 inline-flex text-sm font-semibold text-[#e1062c] hover:text-[#b40422]">
+            Acceder →
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
