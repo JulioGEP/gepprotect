@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageDraft from '../components/PageDraft.astro';
+---
+
+<BaseLayout
+  title="Contacto | Solicitar inspección o propuesta PCI"
+  description="Borrador de la página Contacto de GEP Protect para maximizar leads cualificados."
+>
+  <PageDraft
+    eyebrow="Contacto"
+    title="Hablemos de tu plan PCI: inspección, mantenimiento o actualización"
+    summary="La página de contacto debe ser la más eficiente del sitio: fricción mínima, confianza máxima y rutas claras según necesidad (urgencia, propuesta técnica o consulta normativa)."
+    focus="Captar y cerrar intención de búsqueda de alta conversión (precio, empresa, presupuesto, inspección) con formulario optimizado y múltiples canales de contacto."
+    sections={[
+      {
+        title: 'Formulario corto y útil',
+        text: 'Campos mínimos: empresa, ubicación, tipo de necesidad y teléfono/email. Añadir selector de servicio para priorizar el lead desde el primer contacto.',
+      },
+      {
+        title: 'Canales alternativos',
+        text: 'Mostrar teléfono, email y horario. Si existe servicio urgente, destacarlo claramente para responder a búsquedas de alta inmediatez.',
+      },
+      {
+        title: 'Elementos de confianza',
+        text: 'Recordatorio de certificaciones, años de experiencia y cobertura nacional para reducir objeciones en el último paso del embudo.',
+      },
+      {
+        title: 'Medición y optimización',
+        text: 'Configurar objetivos de conversión y eventos (clic en teléfono, envío de formulario, scroll) para iterar CRO desde el primer mes.',
+      },
+    ]}
+  />
+</BaseLayout>
