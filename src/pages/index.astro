@@ -1,60 +1,257 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const quickLinks = [
+const painPoints = [
+  'Instalación y mantenimiento PCI con cumplimiento RIPCI, CTE y normas UNE.',
+  'Respuesta técnica ágil para industria, logística, retail, hoteles y edificios terciarios.',
+  'Un interlocutor único para detectar riesgos, corregir desviaciones y documentar cada actuación.',
+];
+
+const services = [
   {
-    title: 'Servicios PCI',
-    href: '/servicios',
-    text: 'Instalación, mantenimiento y mejora continua de sistemas de protección contra incendios.',
+    title: 'Ingeniería e instalación PCI',
+    text: 'Diseñamos e implantamos sistemas de detección, alarma, extinción y señalización adaptados al riesgo real de cada edificio o actividad.',
   },
   {
-    title: 'Sectores',
-    href: '/sectores',
-    text: 'Soluciones específicas para industria, logística, retail, hotelero y comunidades.',
+    title: 'Mantenimiento preventivo y correctivo',
+    text: 'Planificamos revisiones, pruebas y reposiciones para que tus instalaciones funcionen cuando de verdad se necesiten y superen auditorías e inspecciones.',
   },
   {
-    title: 'Normativa',
-    href: '/normativa',
-    text: 'Guías prácticas de RIPCI, CTE y normas UNE para tomar decisiones con seguridad.',
+    title: 'Adecuación normativa y soporte documental',
+    text: 'Convertimos la normativa en un plan práctico: informes, checklists, trazabilidad y acompañamiento técnico para responsables de seguridad y mantenimiento.',
+  },
+];
+
+const differentiators = [
+  {
+    title: 'Autoridad técnica',
+    text: 'Combinamos enfoque de ingeniería, mantenimiento reglamentario y criterio de prevención para que cada propuesta tenga sentido técnico y operativo.',
   },
   {
-    title: 'Contacto',
-    href: '/contacto',
-    text: 'Solicita inspección técnica, mantenimiento preventivo o propuesta personalizada.',
+    title: 'Mensaje claro y comercial',
+    text: 'Hablamos de continuidad de negocio, seguridad de personas y cumplimiento, no solo de equipos o referencias normativas.',
+  },
+  {
+    title: 'Captación orientada a sectores',
+    text: 'La home abre puertas a servicios, sectores y normativa para captar tráfico transaccional, informacional y de confianza desde el primer scroll.',
+  },
+];
+
+const sectors = [
+  'Naves industriales y producción',
+  'Logística y plataformas de distribución',
+  'Retail y superficies comerciales',
+  'Hoteles y edificios de pública concurrencia',
+  'Oficinas, edificios terciarios y comunidades',
+  'Centros educativos y espacios sanitarios',
+];
+
+const faqs = [
+  {
+    question: '¿Qué debe transmitir la home de GEP Protect?',
+    answer:
+      'Que no solo instala sistemas PCI: ayuda a reducir riesgo, cumplir normativa y mantener operativa la actividad con un partner técnico de largo recorrido.',
+  },
+  {
+    question: '¿Qué CTA principal conviene priorizar?',
+    answer:
+      '“Solicitar revisión PCI” es el CTA más equilibrado porque funciona para instalaciones nuevas, mantenimiento, auditoría y adecuación normativa.',
+  },
+  {
+    question: '¿Por qué incluir imágenes reales?',
+    answer:
+      'Porque elevan credibilidad, hacen tangible el servicio y mejoran la conversión si muestran técnicos, instalaciones, cuadros de control y contextos sectoriales reales.',
   },
 ];
 ---
 
 <BaseLayout
-  title="GEP Protect | Protección contra incendios para empresas"
-  description="Base de diseño de GEP Protect adaptada a la guía de marca GEPCO Formación y al estilo visual del ecosistema del grupo."
+  title="GEP Protect | Instalación y mantenimiento PCI para empresas"
+  description="Propuesta de nueva home para GEP Protect: más clara, más visual y orientada a captación de leads en protección contra incendios."
 >
-  <section class="container py-14 sm:py-20">
-    <p class="brand-eyebrow">Grupo GEP · Seguridad PCI</p>
-    <h1 class="mt-4 max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-      Protección contra incendios con estética de marca unificada para todo el ecosistema GEP.
-    </h1>
-    <p class="mt-6 max-w-3xl text-lg text-slate-700">
-      Esta base visual toma como referencia <strong>gepcoformacion.es</strong> para definir color principal,
-      jerarquía tipográfica, uso de bloques limpios y llamadas a la acción en rojo corporativo.
-    </p>
-    <div class="mt-8 flex flex-wrap items-center gap-3">
-      <a href="/contacto" class="brand-button">Solicitar inspección PCI</a>
-      <a href="/servicios" class="rounded-full border border-red-200 px-5 py-2.5 text-sm font-semibold text-[#e1062c] transition hover:bg-red-50">Ver servicios</a>
+  <section class="container grid gap-10 py-14 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+    <div>
+      <p class="brand-eyebrow">Propuesta de home · GEP Protect</p>
+      <h1 class="mt-4 max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+        Protección contra incendios para empresas que necesitan cumplir, prevenir y seguir operando con seguridad.
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-700">
+        Esta propuesta combina la <strong>autoridad técnica</strong> habitual del sector PCI con un mensaje mucho más
+        <strong>claro, comercial y orientado a conversión</strong>: qué hace GEP Protect, para quién trabaja y por qué es una opción fiable para instalación, mantenimiento y adecuación normativa.
+      </p>
+      <ul class="mt-8 grid gap-3 text-sm leading-6 text-slate-700 sm:grid-cols-1">
+        {painPoints.map((item) => (
+          <li class="flex gap-3 rounded-2xl border border-red-100 bg-white/90 p-4 shadow-sm">
+            <span class="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-100 text-xs font-bold text-[#b40422]">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contacto" class="brand-button">Solicitar revisión PCI</a>
+        <a href="/servicios" class="rounded-full border border-red-200 px-5 py-2.5 text-sm font-semibold text-[#e1062c] transition hover:bg-red-50">Ver servicios</a>
+      </div>
+    </div>
+
+    <figure class="rounded-[2rem] border border-red-100 bg-white p-4 shadow-lg">
+      <img
+        src="/landing/home-hero-gep-protect.svg"
+        alt="Marcador visual para sustituir por imagen real del hero de GEP Protect"
+        class="h-full w-full rounded-[1.5rem] object-cover"
+      />
+      <figcaption class="mt-3 text-sm text-slate-600">
+        <strong class="text-slate-900">X = ubicación propuesta para imagen principal.</strong>
+        Reemplazar este archivo por una foto horizontal de técnicos PCI en intervención real, preferiblemente en nave industrial o entorno terciario.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="grid gap-6 rounded-[2rem] border border-red-100 bg-white p-8 shadow-sm lg:grid-cols-3">
+      {differentiators.map((item) => (
+        <article>
+          <h2 class="text-lg font-bold text-slate-900">{item.title}</h2>
+          <p class="mt-3 text-sm leading-6 text-slate-700">{item.text}</p>
+        </article>
+      ))}
     </div>
   </section>
 
   <section class="container pb-14 sm:pb-20">
-    <div class="grid gap-5 sm:grid-cols-2">
-      {quickLinks.map((item) => (
-        <article class="brand-card">
-          <h2 class="text-xl font-bold text-slate-900">{item.title}</h2>
-          <p class="mt-3 text-sm leading-6 text-slate-700">{item.text}</p>
-          <a href={item.href} class="mt-4 inline-flex text-sm font-semibold text-[#e1062c] hover:text-[#b40422]">
-            Acceder →
-          </a>
-        </article>
-      ))}
+    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div>
+        <p class="brand-eyebrow">Bloque 1 · Servicios</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Una home que explica rápido qué resuelve GEP Protect.
+        </h2>
+        <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-700">
+          El texto debe dejar atrás el tono genérico del sector y aterrizar el servicio en tres promesas claras: diseño e instalación, mantenimiento continuo y cumplimiento normativo con soporte documental.
+        </p>
+        <div class="mt-8 grid gap-4">
+          {services.map((service) => (
+            <article class="brand-card">
+              <h3 class="text-lg font-bold text-slate-900">{service.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-700">{service.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <figure class="rounded-[2rem] border border-red-100 bg-white p-4 shadow-lg">
+        <img
+          src="/landing/home-servicios-pci.svg"
+          alt="Marcador visual para imagen del bloque de servicios"
+          class="h-full w-full rounded-[1.5rem] object-cover"
+        />
+        <figcaption class="mt-3 text-sm text-slate-600">
+          <strong class="text-slate-900">X = imagen de apoyo para servicios.</strong>
+          Recomendación: sala técnica, central de detección, rociadores, BIE o revisión en cuadro de control.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="grid gap-8 rounded-[2rem] border border-red-100 bg-red-50/60 p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <figure class="order-2 rounded-[2rem] border border-red-100 bg-white p-4 shadow-sm lg:order-1">
+        <img
+          src="/landing/home-mantenimiento-pci.svg"
+          alt="Marcador visual para imagen del bloque de mantenimiento PCI"
+          class="h-full w-full rounded-[1.5rem] object-cover"
+        />
+        <figcaption class="mt-3 text-sm text-slate-600">
+          <strong class="text-slate-900">X = imagen para mantenimiento preventivo.</strong>
+          Ideal: técnico realizando verificación, prueba funcional o mantenimiento con EPIs y contexto real.
+        </figcaption>
+      </figure>
+
+      <div class="order-1 lg:order-2">
+        <p class="brand-eyebrow">Bloque 2 · Confianza y mantenimiento</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Más que una empresa instaladora: un partner para mantener el riesgo bajo control.
+        </h2>
+        <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-700">
+          Este bloque debe reforzar la idea de continuidad: revisar, detectar desviaciones, documentar actuaciones y acompañar al cliente en cada hito técnico o normativo.
+        </p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div class="brand-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">Cumplimiento</p>
+            <p class="mt-3 text-sm leading-6 text-slate-700">Revisiones planificadas, registros y trazabilidad pensados para auditorías, inspecciones y responsables de seguridad.</p>
+          </div>
+          <div class="brand-card">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">Disponibilidad</p>
+            <p class="mt-3 text-sm leading-6 text-slate-700">Menos improvisación y más prevención: sistemas operativos, incidencias controladas y tiempos de respuesta claros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+      <div>
+        <p class="brand-eyebrow">Bloque 3 · Sectores</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          El mensaje debe adaptarse a cada entorno donde el riesgo y la operación cambian.
+        </h2>
+        <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-700">
+          En lugar de una home genérica, proponemos abrir caminos concretos por tipo de cliente. Eso mejora la comprensión, la confianza y el rendimiento SEO de toda la arquitectura.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {sectors.map((sector) => (
+            <span class="rounded-full border border-red-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
+              {sector}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <figure class="rounded-[2rem] border border-red-100 bg-white p-4 shadow-lg">
+        <img
+          src="/landing/home-sectores-pci.svg"
+          alt="Marcador visual para imagen del bloque sectorial"
+          class="h-full w-full rounded-[1.5rem] object-cover"
+        />
+        <figcaption class="mt-3 text-sm text-slate-600">
+          <strong class="text-slate-900">X = imagen sectorial.</strong>
+          Recomendada una escena amplia de nave, plataforma logística, hotel o local comercial protegido con equipos visibles.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="rounded-[2rem] border border-red-100 bg-white p-8 shadow-sm">
+      <div class="max-w-3xl">
+        <p class="brand-eyebrow">Preguntas que la home responde</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Copy propuesto para resolver dudas antes del primer contacto.
+        </h2>
+      </div>
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        {faqs.map((faq) => (
+          <article class="rounded-2xl border border-slate-200 p-5">
+            <h3 class="text-base font-bold text-slate-900">{faq.question}</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-700">{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-16 sm:pb-24">
+    <div class="rounded-[2rem] bg-[#141414] px-8 py-10 text-white shadow-xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-red-200">CTA final</p>
+      <h2 class="mt-4 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Si necesitas una empresa PCI que hable claro, ejecute bien y documente cada paso, esta es la promesa que debe cerrar la home.
+      </h2>
+      <p class="mt-5 max-w-2xl text-base leading-7 text-slate-300">
+        Solicita una revisión de tus instalaciones, una propuesta de mantenimiento o una valoración técnica para adecuación normativa.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contacto" class="brand-button">Solicitar revisión PCI</a>
+        <a href="/delegaciones" class="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10">Ver cobertura y delegaciones</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
