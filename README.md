@@ -16,7 +16,6 @@ Borrador inicial de la nueva web pública de **GEP Protect** construida con **As
 - `/sectores`
 - `/normativa`
 - `/casos-de-exito`
-- `/delegaciones`
 - `/contacto`
 
 Contenido en modo borrador, orientado por intención de búsqueda y preparado para escalar arquitectura SEO.
