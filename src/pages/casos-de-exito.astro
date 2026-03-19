@@ -1,34 +1,231 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageDraft from '../components/PageDraft.astro';
+import InteriorPageLayout from '../components/InteriorPageLayout.astro';
+
+const valueItems = [
+  {
+    title: 'Confianza más rápida',
+    text: 'Un caso bien planteado demuestra antes el encaje entre problema, solución, plazo de implantación y resultado obtenido.',
+  },
+  {
+    title: 'Objeciones más bajas',
+    text: 'Cuando el usuario ve un escenario similar al suyo, reduce la sensación de riesgo y entiende mejor cómo sería trabajar el proyecto.',
+  },
+  {
+    title: 'SEO con intención de validación',
+    text: 'Esta página refuerza búsquedas donde el visitante ya compara empresas, referencias, experiencia y capacidad de ejecución.',
+  },
+  {
+    title: 'Venta apoyada en hechos',
+    text: 'Plazos, alcance, fases, incidencias resueltas y documentación aportan más valor que cualquier claim genérico.',
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Qué debe mostrar un buen caso de éxito PCI?',
+    answer:
+      'El punto de partida, el alcance de la intervención, cómo se ejecutó, qué impacto tuvo sobre la operación y qué resultados o mejoras quedaron acreditados.',
+  },
+  {
+    question: '¿Sirve esta página para SEO además de para vender?',
+    answer:
+      'Sí. Capta búsquedas de validación y ayuda a enlazar servicios, sectores y normativa con un contexto más cercano a la decisión final.',
+  },
+  {
+    question: '¿Es mejor incluir muchos casos o pocos y bien estructurados?',
+    answer:
+      'Suelen funcionar mejor menos casos pero más claros, segmentados por sector y tipo de servicio, con un formato fácil de escanear y de comparar.',
+  },
+  {
+    question: '¿Qué tipo de CTA encaja aquí?',
+    answer:
+      'Un CTA que invite a valorar un proyecto parecido o revisar una necesidad concreta, aprovechando que el usuario ya está en una fase avanzada de decisión.',
+  },
+];
 ---
 
 <BaseLayout
   title="Casos de éxito | Proyectos reales de protección contra incendios"
-  description="Borrador de la página Casos de éxito orientada a confianza y cierre comercial."
+  description="Casos de éxito PCI pensados para reforzar confianza, resolver objeciones y conectar resultados reales con captación SEO y comercial."
 >
-  <PageDraft
+  <InteriorPageLayout
     eyebrow="Casos de éxito"
-    title="Proyectos reales que demuestran impacto en seguridad y cumplimiento"
-    summary="Esta página debe convertirse en activo de conversión. Presentará historias reales de implantación y mantenimiento PCI con métricas que validen resultados y capacidad de ejecución."
-    focus="Apoya búsquedas de validación (“empresa PCI fiable”, “referencias mantenimiento contra incendios”) y acelera cierres al reducir percepción de riesgo antes del contacto comercial."
-    sections={[
-      {
-        title: 'Formato de caso recomendado',
-        text: 'Problema inicial, alcance técnico, solución implementada, normativa cubierta y resultados medibles (plazo, incidencias, disponibilidad).',
-      },
-      {
-        title: 'Segmentación por sector',
-        text: 'Etiquetar casos por vertical y tipo de servicio para que funcionen como contenido SEO y como argumento de venta en reuniones.',
-      },
-      {
-        title: 'Prueba social',
-        text: 'Incorporar testimonios, logos autorizados y datos verificables para reforzar credibilidad sin sobrecargar visualmente la página.',
-      },
-      {
-        title: 'Ruta de conversión',
-        text: 'CTA tras cada caso para solicitar una evaluación similar, enlazando directamente a contacto con formulario pre-rellenado por sector.',
-      },
-    ]}
+    title="Proyectos reales que convierten credibilidad en intención de contacto"
+    intro="Una página de casos de éxito no debe limitarse a enseñar fotos o listar clientes. Tiene que explicar de forma rápida qué problema había, cómo se resolvió y qué cambió después, para que un nuevo visitante vea si GEP Protect puede responder también a una necesidad parecida a la suya."
+    audience="Empresas que ya comparan proveedores, responsables que necesitan validar experiencia y perfiles que buscan reducir riesgo antes de contactar."
+    benefit="Más confianza, mejores leads y argumentos de venta basados en evidencia operativa y técnica."
+    miniCta={{ href: '/contacto', label: 'Quiero valorar un proyecto parecido' }}
+    valueTitle="La prueba más convincente es enseñar cómo se resuelve una necesidad concreta de principio a fin."
+    valueItems={valueItems}
+    core={{
+      title: 'Casos de éxito PCI: cómo estructurarlos para vender con hechos y posicionar mejor',
+      intro:
+        'Las referencias que mejor funcionan combinan claridad, contexto y datos comprensibles. El visitante quiere ver qué se hizo, por qué se hizo así y qué impacto tuvo, sin tener que atravesar una historia corporativa larga o ambigua.',
+      blocks: [
+        {
+          title: 'Qué es exactamente un caso de éxito útil',
+          text:
+            'Es una pieza de contenido que conecta un problema real con una solución ejecutada y un resultado verificable. Debe ayudar al usuario a imaginar su propio proyecto con menos incertidumbre.',
+          bullets: [
+            'Problema inicial claro.',
+            'Alcance técnico bien resumido.',
+            'Resultado expresado en mejoras visibles para el cliente.',
+          ],
+        },
+        {
+          title: 'Cómo funciona dentro del funnel',
+          text:
+            'Esta página trabaja muy bien en mitad y final del proceso de decisión. Refuerza páginas de servicios, complementa búsquedas sectoriales y ayuda a responder objeciones antes del primer contacto comercial.',
+          bullets: [
+            'Valida capacidad de ejecución.',
+            'Aporta contexto real a la propuesta de valor.',
+            'Mejora la relación entre SEO y conversión.',
+          ],
+        },
+        {
+          title: 'Por qué es importante para cerrar oportunidades',
+          text:
+            'Muchos visitantes no dudan del servicio en abstracto; dudan de si el equipo sabrá aplicarlo a su entorno. Un caso bien contado reduce esa fricción y hace que la conversación avance más deprisa.',
+          bullets: [
+            'Disminuye objeciones sobre experiencia.',
+            'Hace tangible la metodología de trabajo.',
+            'Permite CTA de alta intención sin sonar agresivo.',
+          ],
+        },
+      ],
+    }}
+    useCases={{
+      title: 'Aplicaciones que conectan mejor con distintos perfiles de decisión',
+      intro:
+        'Una buena página de referencias no es uniforme. Debe organizar ejemplos para que cada visitante encuentre el tipo de proyecto que más se parece al suyo.',
+      items: [
+        {
+          title: 'Implantaciones en industria y logística',
+          text:
+            'Muy útiles para explicar coordinación con operativa, planificación por fases y control del impacto sobre actividad crítica.',
+          bullets: ['Fases de implantación.', 'Ajuste a riesgo operativo.', 'Resultados documentados y seguimiento.'],
+        },
+        {
+          title: 'Adecuaciones y regularizaciones',
+          text:
+            'Casos que muestran cómo pasar de una instalación con carencias o documentación dispersa a un escenario más ordenado y trazable.',
+          bullets: ['Diagnóstico inicial.', 'Priorización de actuaciones.', 'Mejor visibilidad para inspecciones.'],
+        },
+        {
+          title: 'Mantenimiento continuado',
+          text:
+            'Ejemplos orientados a continuidad, reducción de incidencias y control sobre revisiones periódicas en edificios en uso.',
+          bullets: ['Programación estable.', 'Correcciones recurrentes mejor gestionadas.', 'Más claridad para mantenimiento y dirección.'],
+        },
+        {
+          title: 'Entornos con atención al público',
+          text:
+            'Proyectos donde la disponibilidad del edificio, la experiencia del usuario y la coordinación con actividad comercial o hotelera son variables clave.',
+          bullets: ['Intervención con mínima fricción.', 'Enfoque claro en evacuación y señalización.', 'Compatibilidad con la actividad.'],
+        },
+      ],
+    }}
+    visual={{
+      title: 'Las imágenes y esquemas deben apoyar el relato del proyecto, no sustituirlo',
+      text:
+        'El bloque visual funciona mejor cuando refuerza la lectura del alcance: entorno, equipos intervenidos, tipo de instalación y resultado final. Así el caso deja de ser abstracto y gana valor persuasivo.',
+      image: '/landing/home-servicios-pci.webp',
+      alt: 'Entorno técnico de instalación y revisión de sistemas de protección contra incendios',
+    }}
+    differentiators={{
+      title: 'La diferencia está en cómo se cuentan los resultados y no solo en mostrar que existen',
+      intro:
+        'El benchmark apunta a una idea sencilla: una referencia vende mejor cuando contextualiza plazo, complejidad y beneficio operativo en lugar de quedarse en mensajes de marca demasiado abiertos.',
+      items: [
+        {
+          title: 'Formato repetible',
+          text: 'Problema, solución, ejecución y resultado crean una lectura consistente que el usuario puede comparar entre distintos casos.',
+        },
+        {
+          title: 'Segmentación por vertical',
+          text: 'Agrupar por sector o tipo de servicio mejora UX y ayuda a capturar búsquedas más específicas con mejor intención comercial.',
+        },
+        {
+          title: 'Resultados medibles',
+          text: 'Siempre que existan datos verificables, conviene destacar plazos, alcance, incidencias corregidas o hitos de documentación entregada.',
+        },
+        {
+          title: 'CTA ligado al ejemplo',
+          text: 'Cada caso debe cerrar con una invitación a revisar un proyecto similar, aprovechando la afinidad creada durante la lectura.',
+        },
+      ]
+    }}
+    proof={{
+      title: 'La confianza aumenta cuando el proyecto se puede leer como una decisión bien ejecutada',
+      intro:
+        'Los elementos de prueba social más útiles en este formato suelen ser los que ayudan a validar proceso, alcance y resultado, sin necesidad de exagerar el mensaje comercial.',
+      items: [
+        {
+          highlight: 'Proceso',
+          title: 'Antes y después comprensibles',
+          text: 'Mostrar el punto de partida y el resultado final permite entender rápido el valor de la intervención y la lógica de las actuaciones ejecutadas.',
+        },
+        {
+          highlight: 'Datos',
+          title: 'Indicadores que sí importan',
+          text: 'Plazos, disponibilidad, incidencias resueltas o mejora en trazabilidad documental tienen más peso que una valoración genérica sin contexto.',
+        },
+        {
+          highlight: 'Afinidad',
+          title: 'Ejemplos cercanos al caso del visitante',
+          text: 'La mayor palanca de credibilidad es que el usuario vea un entorno, un problema o una necesidad similares a los suyos.',
+        },
+      ]
+    }}
+    comparison={{
+      title: 'Qué resuelve esta estructura frente a una página de referencias poco trabajada',
+      intro:
+        'Una colección desordenada de proyectos suele convertir peor que una página que clasifica, resume y orienta la lectura hacia una decisión clara.',
+      rows: [
+        {
+          topic: 'Claridad',
+          ours: 'Cada caso resume problema, solución y resultado.',
+          alternative: 'Las referencias aparecen sin contexto suficiente.',
+        },
+        {
+          topic: 'Utilidad comercial',
+          ours: 'El usuario puede comparar si su necesidad se parece a un caso mostrado.',
+          alternative: 'Cuesta extrapolar el valor a su propia situación.',
+        },
+        {
+          topic: 'SEO',
+          ours: 'Facilita enlazar por sector, servicio y long tail de validación.',
+          alternative: 'Aporta menos señales semánticas y peor navegación interna.',
+        },
+      ]
+    }}
+    faqs={faqs}
+    finalCta={{
+      title: 'Convirtamos la experiencia real en una página que reduzca objeciones y genere demanda',
+      text: 'Si quieres estructurar casos de éxito con foco en resultados, sector y conversión, podemos plantear un formato editorial que funcione tanto para SEO como para ventas.',
+      primary: { href: '/contacto', label: 'Solicitar propuesta de estructura de casos' },
+      secondary: { href: '/sectores', label: 'Ver sectores relacionados' },
+    }}
+    related={{
+      title: 'Amplía el recorrido con páginas que completan la decisión',
+      links: [
+        {
+          href: '/servicios',
+          label: 'Servicios PCI',
+          description: 'Conecta cada caso con la solución técnica específica detrás del resultado mostrado.',
+        },
+        {
+          href: '/sectores',
+          label: 'Sectores',
+          description: 'Ayuda al visitante a filtrar proyectos según el tipo de instalación o actividad.',
+        },
+        {
+          href: '/contacto',
+          label: 'Contacto',
+          description: 'Abre una conversación directa para valorar una necesidad similar a los ejemplos vistos.',
+        },
+      ]
+    }}
   />
 </BaseLayout>
