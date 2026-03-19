@@ -1,231 +1,289 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InteriorPageLayout from '../components/InteriorPageLayout.astro';
 
-const valueItems = [
+const caseStudies = [
   {
-    title: 'Confianza más rápida',
-    text: 'Un caso bien planteado demuestra antes el encaje entre problema, solución, plazo de implantación y resultado obtenido.',
+    id: 'caso-industria',
+    category: 'Industria',
+    title: 'Adecuación integral de una nave industrial',
+    summary:
+      'Plantilla de caso para explicar una intervención completa: situación inicial, alcance ejecutado, fases y resultado conseguido.',
+    challenge:
+      'Describe aquí el punto de partida: carencias detectadas, nivel de urgencia, condicionantes de producción y objetivos del cliente.',
+    solution: [
+      'Diagnóstico técnico y priorización de actuaciones.',
+      'Implantación por fases para reducir impacto operativo.',
+      'Documentación final y validación de la solución aplicada.',
+    ],
+    results: [
+      'Espacio para indicadores o mejoras observables.',
+      'Espacio para hitos de plazo, coordinación o legalización.',
+      'Espacio para una conclusión breve orientada a negocio.',
+    ],
   },
   {
-    title: 'Objeciones más bajas',
-    text: 'Cuando el usuario ve un escenario similar al suyo, reduce la sensación de riesgo y entiende mejor cómo sería trabajar el proyecto.',
+    id: 'caso-logistica',
+    category: 'Logística',
+    title: 'Actualización de sistemas en centro logístico',
+    summary:
+      'Bloque pensado para proyectos con alta exigencia operativa, donde conviene explicar compatibilidad con actividad, tiempos y coordinación.',
+    challenge:
+      'Añade aquí la problemática concreta: horarios, continuidad del servicio, riesgos críticos o necesidad de adaptar instalaciones existentes.',
+    solution: [
+      'Plan de trabajo adaptado a la operativa del centro.',
+      'Coordinación entre equipos técnicos y responsables de instalación.',
+      'Seguimiento del proyecto con entregables claros en cada fase.',
+    ],
+    results: [
+      'Espacio para reducción de incidencias o tiempos de parada.',
+      'Espacio para mejoras de trazabilidad y mantenimiento.',
+      'Espacio para testimonios, si se quieren incorporar más adelante.',
+    ],
   },
   {
-    title: 'SEO con intención de validación',
-    text: 'Esta página refuerza búsquedas donde el visitante ya compara empresas, referencias, experiencia y capacidad de ejecución.',
+    id: 'caso-hotelero',
+    category: 'Hotelero',
+    title: 'Mejora PCI en edificio con atención al público',
+    summary:
+      'Formato útil para explicar trabajos en inmuebles en uso, donde la experiencia del usuario y la mínima afección son parte del valor.',
+    challenge:
+      'Introduce aquí el contexto del edificio, limitaciones de intervención, necesidades de señalización, evacuación o adaptación normativa.',
+    solution: [
+      'Planificación por zonas o por franjas horarias.',
+      'Ejecución enfocada a seguridad, orden y continuidad de actividad.',
+      'Cierre del proyecto con documentación y recomendaciones futuras.',
+    ],
+    results: [
+      'Espacio para resumir mejoras visibles en el inmueble.',
+      'Espacio para reflejar coordinación con dirección o mantenimiento.',
+      'Espacio para próximos pasos o mantenimiento asociado.',
+    ],
   },
   {
-    title: 'Venta apoyada en hechos',
-    text: 'Plazos, alcance, fases, incidencias resueltas y documentación aportan más valor que cualquier claim genérico.',
+    id: 'caso-oficinas',
+    category: 'Oficinas',
+    title: 'Regularización y puesta al día de instalaciones',
+    summary:
+      'Caso tipo para enseñar cómo se ordena una situación dispersa y se convierte en un proyecto claro, documentado y accionable.',
+    challenge:
+      'Aquí se puede detallar si había revisiones pendientes, documentación incompleta, carencias detectadas o necesidad de actualización general.',
+    solution: [
+      'Revisión del estado real de la instalación.',
+      'Definición de actuaciones prioritarias y hoja de ruta.',
+      'Entrega de documentación organizada para seguimiento posterior.',
+    ],
+    results: [
+      'Espacio para resumir mejoras en control y visibilidad.',
+      'Espacio para explicar el antes y después del proyecto.',
+      'Espacio para CTA o enlace a un servicio relacionado.',
+    ],
   },
 ];
 
-const faqs = [
-  {
-    question: '¿Qué debe mostrar un buen caso de éxito PCI?',
-    answer:
-      'El punto de partida, el alcance de la intervención, cómo se ejecutó, qué impacto tuvo sobre la operación y qué resultados o mejoras quedaron acreditados.',
-  },
-  {
-    question: '¿Sirve esta página para SEO además de para vender?',
-    answer:
-      'Sí. Capta búsquedas de validación y ayuda a enlazar servicios, sectores y normativa con un contexto más cercano a la decisión final.',
-  },
-  {
-    question: '¿Es mejor incluir muchos casos o pocos y bien estructurados?',
-    answer:
-      'Suelen funcionar mejor menos casos pero más claros, segmentados por sector y tipo de servicio, con un formato fácil de escanear y de comparar.',
-  },
-  {
-    question: '¿Qué tipo de CTA encaja aquí?',
-    answer:
-      'Un CTA que invite a valorar un proyecto parecido o revisar una necesidad concreta, aprovechando que el usuario ya está en una fase avanzada de decisión.',
-  },
+const process = [
+  'Contexto del cliente y del inmueble.',
+  'Problema detectado o necesidad inicial.',
+  'Solución planteada por GEP Protect.',
+  'Resultado final y siguiente paso recomendado.',
 ];
+
+const canonicalBase = Astro.site ?? new URL('https://gepprotect.netlify.app');
+const pageUrl = new URL(Astro.url.pathname, canonicalBase).toString();
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: new URL('/', canonicalBase).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Casos de éxito',
+      item: pageUrl,
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Casos de éxito | Proyectos reales de protección contra incendios"
-  description="Casos de éxito PCI pensados para reforzar confianza, resolver objeciones y conectar resultados reales con captación SEO y comercial."
+  title="Casos de éxito | Ejemplos de proyectos de protección contra incendios"
+  description="Página interior para presentar varios casos de éxito de GEP Protect con una estructura clara, sencilla y preparada para completar con proyectos reales."
 >
-  <InteriorPageLayout
-    eyebrow="Casos de éxito"
-    title="Proyectos reales que convierten credibilidad en intención de contacto"
-    intro="Una página de casos de éxito no debe limitarse a enseñar fotos o listar clientes. Tiene que explicar de forma rápida qué problema había, cómo se resolvió y qué cambió después, para que un nuevo visitante vea si GEP Protect puede responder también a una necesidad parecida a la suya."
-    audience="Empresas que ya comparan proveedores, responsables que necesitan validar experiencia y perfiles que buscan reducir riesgo antes de contactar."
-    benefit="Más confianza, mejores leads y argumentos de venta basados en evidencia operativa y técnica."
-    miniCta={{ href: '/contacto', label: 'Quiero valorar un proyecto parecido' }}
-    valueTitle="La prueba más convincente es enseñar cómo se resuelve una necesidad concreta de principio a fin."
-    valueItems={valueItems}
-    core={{
-      title: 'Casos de éxito PCI: cómo estructurarlos para vender con hechos y posicionar mejor',
-      intro:
-        'Las referencias que mejor funcionan combinan claridad, contexto y datos comprensibles. El visitante quiere ver qué se hizo, por qué se hizo así y qué impacto tuvo, sin tener que atravesar una historia corporativa larga o ambigua.',
-      blocks: [
-        {
-          title: 'Qué es exactamente un caso de éxito útil',
-          text:
-            'Es una pieza de contenido que conecta un problema real con una solución ejecutada y un resultado verificable. Debe ayudar al usuario a imaginar su propio proyecto con menos incertidumbre.',
-          bullets: [
-            'Problema inicial claro.',
-            'Alcance técnico bien resumido.',
-            'Resultado expresado en mejoras visibles para el cliente.',
-          ],
-        },
-        {
-          title: 'Cómo funciona dentro del funnel',
-          text:
-            'Esta página trabaja muy bien en mitad y final del proceso de decisión. Refuerza páginas de servicios, complementa búsquedas sectoriales y ayuda a responder objeciones antes del primer contacto comercial.',
-          bullets: [
-            'Valida capacidad de ejecución.',
-            'Aporta contexto real a la propuesta de valor.',
-            'Mejora la relación entre SEO y conversión.',
-          ],
-        },
-        {
-          title: 'Por qué es importante para cerrar oportunidades',
-          text:
-            'Muchos visitantes no dudan del servicio en abstracto; dudan de si el equipo sabrá aplicarlo a su entorno. Un caso bien contado reduce esa fricción y hace que la conversación avance más deprisa.',
-          bullets: [
-            'Disminuye objeciones sobre experiencia.',
-            'Hace tangible la metodología de trabajo.',
-            'Permite CTA de alta intención sin sonar agresivo.',
-          ],
-        },
-      ],
-    }}
-    useCases={{
-      title: 'Aplicaciones que conectan mejor con distintos perfiles de decisión',
-      intro:
-        'Una buena página de referencias no es uniforme. Debe organizar ejemplos para que cada visitante encuentre el tipo de proyecto que más se parece al suyo.',
-      items: [
-        {
-          title: 'Implantaciones en industria y logística',
-          text:
-            'Muy útiles para explicar coordinación con operativa, planificación por fases y control del impacto sobre actividad crítica.',
-          bullets: ['Fases de implantación.', 'Ajuste a riesgo operativo.', 'Resultados documentados y seguimiento.'],
-        },
-        {
-          title: 'Adecuaciones y regularizaciones',
-          text:
-            'Casos que muestran cómo pasar de una instalación con carencias o documentación dispersa a un escenario más ordenado y trazable.',
-          bullets: ['Diagnóstico inicial.', 'Priorización de actuaciones.', 'Mejor visibilidad para inspecciones.'],
-        },
-        {
-          title: 'Mantenimiento continuado',
-          text:
-            'Ejemplos orientados a continuidad, reducción de incidencias y control sobre revisiones periódicas en edificios en uso.',
-          bullets: ['Programación estable.', 'Correcciones recurrentes mejor gestionadas.', 'Más claridad para mantenimiento y dirección.'],
-        },
-        {
-          title: 'Entornos con atención al público',
-          text:
-            'Proyectos donde la disponibilidad del edificio, la experiencia del usuario y la coordinación con actividad comercial o hotelera son variables clave.',
-          bullets: ['Intervención con mínima fricción.', 'Enfoque claro en evacuación y señalización.', 'Compatibilidad con la actividad.'],
-        },
-      ],
-    }}
-    visual={{
-      title: 'Las imágenes y esquemas deben apoyar el relato del proyecto, no sustituirlo',
-      text:
-        'El bloque visual funciona mejor cuando refuerza la lectura del alcance: entorno, equipos intervenidos, tipo de instalación y resultado final. Así el caso deja de ser abstracto y gana valor persuasivo.',
-      image: '/landing/home-servicios-pci.webp',
-      alt: 'Entorno técnico de instalación y revisión de sistemas de protección contra incendios',
-    }}
-    differentiators={{
-      title: 'La diferencia está en cómo se cuentan los resultados y no solo en mostrar que existen',
-      intro:
-        'El benchmark apunta a una idea sencilla: una referencia vende mejor cuando contextualiza plazo, complejidad y beneficio operativo en lugar de quedarse en mensajes de marca demasiado abiertos.',
-      items: [
-        {
-          title: 'Formato repetible',
-          text: 'Problema, solución, ejecución y resultado crean una lectura consistente que el usuario puede comparar entre distintos casos.',
-        },
-        {
-          title: 'Segmentación por vertical',
-          text: 'Agrupar por sector o tipo de servicio mejora UX y ayuda a capturar búsquedas más específicas con mejor intención comercial.',
-        },
-        {
-          title: 'Resultados medibles',
-          text: 'Siempre que existan datos verificables, conviene destacar plazos, alcance, incidencias corregidas o hitos de documentación entregada.',
-        },
-        {
-          title: 'CTA ligado al ejemplo',
-          text: 'Cada caso debe cerrar con una invitación a revisar un proyecto similar, aprovechando la afinidad creada durante la lectura.',
-        },
-      ]
-    }}
-    proof={{
-      title: 'La confianza aumenta cuando el proyecto se puede leer como una decisión bien ejecutada',
-      intro:
-        'Los elementos de prueba social más útiles en este formato suelen ser los que ayudan a validar proceso, alcance y resultado, sin necesidad de exagerar el mensaje comercial.',
-      items: [
-        {
-          highlight: 'Proceso',
-          title: 'Antes y después comprensibles',
-          text: 'Mostrar el punto de partida y el resultado final permite entender rápido el valor de la intervención y la lógica de las actuaciones ejecutadas.',
-        },
-        {
-          highlight: 'Datos',
-          title: 'Indicadores que sí importan',
-          text: 'Plazos, disponibilidad, incidencias resueltas o mejora en trazabilidad documental tienen más peso que una valoración genérica sin contexto.',
-        },
-        {
-          highlight: 'Afinidad',
-          title: 'Ejemplos cercanos al caso del visitante',
-          text: 'La mayor palanca de credibilidad es que el usuario vea un entorno, un problema o una necesidad similares a los suyos.',
-        },
-      ]
-    }}
-    comparison={{
-      title: 'Qué resuelve esta estructura frente a una página de referencias poco trabajada',
-      intro:
-        'Una colección desordenada de proyectos suele convertir peor que una página que clasifica, resume y orienta la lectura hacia una decisión clara.',
-      rows: [
-        {
-          topic: 'Claridad',
-          ours: 'Cada caso resume problema, solución y resultado.',
-          alternative: 'Las referencias aparecen sin contexto suficiente.',
-        },
-        {
-          topic: 'Utilidad comercial',
-          ours: 'El usuario puede comparar si su necesidad se parece a un caso mostrado.',
-          alternative: 'Cuesta extrapolar el valor a su propia situación.',
-        },
-        {
-          topic: 'SEO',
-          ours: 'Facilita enlazar por sector, servicio y long tail de validación.',
-          alternative: 'Aporta menos señales semánticas y peor navegación interna.',
-        },
-      ]
-    }}
-    faqs={faqs}
-    finalCta={{
-      title: 'Convirtamos la experiencia real en una página que reduzca objeciones y genere demanda',
-      text: 'Si quieres estructurar casos de éxito con foco en resultados, sector y conversión, podemos plantear un formato editorial que funcione tanto para SEO como para ventas.',
-      primary: { href: '/contacto', label: 'Solicitar propuesta de estructura de casos' },
-      secondary: { href: '/sectores', label: 'Ver sectores relacionados' },
-    }}
-    related={{
-      title: 'Amplía el recorrido con páginas que completan la decisión',
-      links: [
-        {
-          href: '/servicios',
-          label: 'Servicios PCI',
-          description: 'Conecta cada caso con la solución técnica específica detrás del resultado mostrado.',
-        },
-        {
-          href: '/sectores',
-          label: 'Sectores',
-          description: 'Ayuda al visitante a filtrar proyectos según el tipo de instalación o actividad.',
-        },
-        {
-          href: '/contacto',
-          label: 'Contacto',
-          description: 'Abre una conversación directa para valorar una necesidad similar a los ejemplos vistos.',
-        },
-      ]
-    }}
-  />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <section class="container py-8 sm:py-10 lg:py-12">
+    <div class="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)] lg:items-start">
+      <aside class="rounded-[2rem] border border-stone-200 bg-stone-50 p-5 lg:sticky lg:top-24">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#b40422]">Casos de éxito</p>
+        <h2 class="mt-4 text-lg font-semibold text-slate-900">Contenido de la página</h2>
+        <ul class="mt-5 space-y-3 text-sm text-slate-600">
+          <li><a href="#intro" class="transition hover:text-[#e1062c]">Introducción</a></li>
+          <li><a href="#estructura" class="transition hover:text-[#e1062c]">Cómo se leerán los casos</a></li>
+          <li><a href="#listado" class="transition hover:text-[#e1062c]">Listado de casos</a></li>
+          <li><a href="#contacto" class="transition hover:text-[#e1062c]">Cierre y contacto</a></li>
+        </ul>
+      </aside>
+
+      <div class="space-y-8">
+        <section id="intro" class="rounded-[2rem] border border-stone-200 bg-white p-6 sm:p-8 lg:p-10">
+          <nav aria-label="Breadcrumb" class="text-sm text-slate-500">
+            <ol class="flex flex-wrap items-center gap-2">
+              <li><a href="/" class="transition hover:text-[#e1062c]">Inicio</a></li>
+              <li aria-hidden="true" class="text-stone-300">/</li>
+              <li class="font-medium text-slate-700">Casos de éxito</li>
+            </ol>
+          </nav>
+
+          <div class="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_18rem]">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[#b40422]">Página interior</p>
+              <h1 class="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-slate-900 sm:text-5xl">
+                Casos reales contados de forma simple y directa
+              </h1>
+              <p class="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+                Esta maqueta plantea una página mucho más sobria que el resto: sin bloques comerciales largos,
+                sin exceso de elementos visuales y con una estructura pensada para explicar varios casos de éxito
+                de forma ordenada. Cada apartado queda listo para completar más adelante con proyectos reales.
+              </p>
+            </div>
+
+            <div class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-5">
+              <p class="text-sm font-semibold text-slate-900">Objetivo de esta versión</p>
+              <p class="mt-3 text-sm leading-6 text-slate-600">
+                Mostrar experiencia, metodología y resultados con un formato interior claro, fácil de ampliar y
+                diferente a las demás páginas del sitio.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="estructura" class="rounded-[2rem] border border-stone-200 bg-white p-6 sm:p-8 lg:p-10">
+          <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[#b40422]">Estructura base</p>
+              <h2 class="mt-4 text-3xl font-semibold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+                Todos los casos seguirán el mismo esquema para que la lectura sea rápida
+              </h2>
+              <p class="mt-5 max-w-3xl text-base leading-7 text-slate-600">
+                La idea es que el visitante pueda comparar varios proyectos sin perderse. Cada caso tendrá una breve
+                introducción, un bloque de reto, otro de solución y un cierre con resultados o aprendizajes.
+              </p>
+            </div>
+
+            <div class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-5">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Orden de lectura</p>
+              <ol class="mt-4 space-y-3 text-sm text-slate-700">
+                {process.map((item, index) => (
+                  <li class="flex gap-3">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-stone-300 text-xs font-semibold text-slate-700">
+                      {index + 1}
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section id="listado" class="space-y-5">
+          <div class="rounded-[2rem] border border-stone-200 bg-white p-6 sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[#b40422]">Listado de casos</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+              Espacio preparado para varios proyectos y distintos sectores
+            </h2>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+              Los siguientes bloques son placeholders. Ya dejan clara la maquetación final para completar cada caso
+              sin necesidad de rediseñar la página cuando llegue el contenido definitivo.
+            </p>
+          </div>
+
+          {caseStudies.map((item, index) => (
+            <article id={item.id} class="rounded-[2rem] border border-stone-200 bg-white p-6 sm:p-8 lg:p-10">
+              <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start">
+                <div>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="inline-flex rounded-full border border-stone-300 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700">
+                      Caso {index + 1}
+                    </span>
+                    <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[#b40422]">{item.category}</span>
+                  </div>
+
+                  <h3 class="mt-5 text-2xl font-semibold tracking-[-0.03em] text-slate-900 sm:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">{item.summary}</p>
+                </div>
+
+                <div class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-5">
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Estado actual</p>
+                  <p class="mt-3 text-sm leading-6 text-slate-600">
+                    Contenido de ejemplo listo para sustituir por datos reales, imágenes o métricas cuando se definan.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-8 grid gap-4 lg:grid-cols-3">
+                <section class="rounded-[1.5rem] border border-stone-200 p-5">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#b40422]">Reto</p>
+                  <p class="mt-3 text-sm leading-6 text-slate-600">{item.challenge}</p>
+                </section>
+
+                <section class="rounded-[1.5rem] border border-stone-200 p-5">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#b40422]">Solución</p>
+                  <ul class="mt-3 space-y-3 text-sm leading-6 text-slate-600">
+                    {item.solution.map((entry) => (
+                      <li class="flex gap-3">
+                        <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e1062c]"></span>
+                        <span>{entry}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section class="rounded-[1.5rem] border border-stone-200 p-5">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#b40422]">Resultado</p>
+                  <ul class="mt-3 space-y-3 text-sm leading-6 text-slate-600">
+                    {item.results.map((entry) => (
+                      <li class="flex gap-3">
+                        <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"></span>
+                        <span>{entry}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section id="contacto" class="rounded-[2rem] border border-[#f4c8d1] bg-[#fff7f8] p-6 sm:p-8 lg:p-10">
+          <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_14rem] lg:items-end">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[#b40422]">Siguiente paso</p>
+              <h2 class="mt-4 text-3xl font-semibold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+                Cuando tengamos los proyectos definitivos, esta página ya estará lista para crecer
+              </h2>
+              <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+                Podemos completar cada bloque con nombres de proyecto, imágenes, métricas, citas del cliente o enlaces
+                a servicios relacionados, manteniendo la misma base visual y el mismo orden de lectura.
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <a href="/contacto" class="brand-button w-full">Solicitar propuesta</a>
+              <a href="/servicios" class="inline-flex w-full items-center justify-center rounded-full border border-stone-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900">
+                Ver servicios
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
