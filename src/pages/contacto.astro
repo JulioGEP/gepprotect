@@ -1,34 +1,231 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageDraft from '../components/PageDraft.astro';
+import InteriorPageLayout from '../components/InteriorPageLayout.astro';
+
+const valueItems = [
+  {
+    title: 'Fricción mínima',
+    text: 'La página prioriza campos esenciales, contexto suficiente y una ruta rápida para usuarios que ya quieren hablar contigo.',
+  },
+  {
+    title: 'Leads más cualificados',
+    text: 'Al pedir tipo de necesidad, ubicación y canal preferido, el equipo recibe información útil para responder con más criterio.',
+  },
+  {
+    title: 'Canales visibles',
+    text: 'Teléfono, email y CTA principal conviven de forma clara para cubrir tanto urgencia como solicitud de propuesta técnica.',
+  },
+  {
+    title: 'Cierre SEO/CRO',
+    text: 'La página final del recorrido debe reforzar confianza, resolver objeciones básicas y facilitar la conversión sin ruido visual.',
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Qué datos conviene pedir en un primer contacto PCI?',
+    answer:
+      'Empresa, ubicación, tipo de necesidad, teléfono o email y una breve descripción del contexto. Suele ser suficiente para iniciar la conversación sin crear fricción innecesaria.',
+  },
+  {
+    question: '¿Es mejor un formulario largo o corto?',
+    answer:
+      'En la mayoría de casos funciona mejor un formulario corto y útil, complementado con rutas alternativas como llamada o correo para necesidades urgentes.',
+  },
+  {
+    question: '¿Qué mensajes ayudan a convertir más en esta página?',
+    answer:
+      'Los que aclaran qué pasará después del envío, cuánto compromiso implica el primer paso y qué tipo de ayuda puede esperar el usuario.',
+  },
+  {
+    question: '¿Cómo se enlaza contacto con el resto del sitio?',
+    answer:
+      'Como cierre natural de servicios, sectores, normativa y casos de éxito, reforzando la sensación de recorrido lógico y no de salida forzada.',
+  },
+];
 ---
 
 <BaseLayout
   title="Contacto | Solicitar inspección o propuesta PCI"
-  description="Borrador de la página Contacto de GEP Protect para maximizar leads cualificados."
+  description="Página de contacto PCI optimizada para captar leads cualificados con mínima fricción, confianza reforzada y rutas claras hacia revisión o propuesta."
 >
-  <PageDraft
+  <InteriorPageLayout
     eyebrow="Contacto"
-    title="Hablemos de tu plan PCI: inspección, mantenimiento o actualización"
-    summary="La página de contacto debe ser la más eficiente del sitio: fricción mínima, confianza máxima y rutas claras según necesidad (urgencia, propuesta técnica o consulta normativa)."
-    focus="Captar y cerrar intención de búsqueda de alta conversión (precio, empresa, presupuesto, inspección) con formulario optimizado y múltiples canales de contacto."
-    sections={[
-      {
-        title: 'Formulario corto y útil',
-        text: 'Campos mínimos: empresa, ubicación, tipo de necesidad y teléfono/email. Añadir selector de servicio para priorizar el lead desde el primer contacto.',
-      },
-      {
-        title: 'Canales alternativos',
-        text: 'Mostrar teléfono, email y horario. Si existe servicio urgente, destacarlo claramente para responder a búsquedas de alta inmediatez.',
-      },
-      {
-        title: 'Elementos de confianza',
-        text: 'Recordatorio de certificaciones, años de experiencia y cobertura nacional para reducir objeciones en el último paso del embudo.',
-      },
-      {
-        title: 'Medición y optimización',
-        text: 'Configurar objetivos de conversión y eventos (clic en teléfono, envío de formulario, scroll) para iterar CRO desde el primer mes.',
-      },
-    ]}
+    title="Hablemos de tu necesidad PCI sin fricción y con el contexto justo"
+    intro="La página de contacto debe resolver de inmediato qué puede hacer el usuario aquí, para quién está pensada y qué obtiene al dar el siguiente paso. Sin hero y con jerarquía clara, esta estructura favorece que el visitante pase de la duda a la acción con menos esfuerzo."
+    audience="Empresas, responsables técnicos y perfiles de dirección que necesitan una revisión, una propuesta o una conversación inicial sobre instalación, mantenimiento o adecuación PCI."
+    benefit="Más conversiones cualificadas y menos abandono en el último paso del recorrido."
+    miniCta={{ href: '/servicios', label: 'Prefiero revisar antes los servicios disponibles' }}
+    valueTitle="La mejor página de contacto es la que permite avanzar rápido sin obligar al usuario a pensar demasiado."
+    valueItems={valueItems}
+    core={{
+      title: 'Contacto PCI: cómo estructurar una página que cierre mejor la intención de búsqueda',
+      intro:
+        'En las webs que mejor convierten, la página de contacto no es un trámite. Es un activo de captación que reduce objeciones, ordena el lead y explica con claridad qué ocurrirá tras el primer paso.',
+      blocks: [
+        {
+          title: 'Qué es exactamente una buena página de contacto',
+          text:
+            'Es una página pensada para transformar intención en acción. Debe filtrar la necesidad mínima imprescindible y, al mismo tiempo, dar seguridad suficiente para completar el formulario o usar un canal alternativo.',
+          bullets: [
+            'Indica para qué tipo de consultas está pensada.',
+            'Pide pocos datos pero útiles.',
+            'Anticipa qué sucederá después del contacto.',
+          ],
+        },
+        {
+          title: 'Cómo funciona dentro del embudo',
+          text:
+            'Recoge tráfico procedente de servicios, normativa, sectores y casos de éxito. Por eso necesita coherencia con todo lo leído antes y un mensaje final que no rompa la experiencia.',
+          bullets: [
+            'Cierra búsquedas transaccionales y comparativas.',
+            'Sirve como CTA final en múltiples landings interiores.',
+            'Convierte mejor cuando mantiene el tono y la claridad del sitio.',
+          ],
+        },
+        {
+          title: 'Por qué es importante para la calidad del lead',
+          text:
+            'Un formulario bien planteado no solo capta más; capta mejor. Permite priorizar, responder con contexto y evitar intercambios innecesarios antes de entender el problema real del cliente.',
+          bullets: [
+            'Acelera la primera respuesta comercial o técnica.',
+            'Ordena necesidades por tipo de servicio o urgencia.',
+            'Reduce pérdida de oportunidades en el último clic.',
+          ],
+        },
+      ],
+    }}
+    useCases={{
+      title: 'Aplicaciones pensadas para distintos momentos de decisión',
+      intro:
+        'No todos los usuarios llegan a contacto con la misma urgencia. La página debe contemplar recorridos distintos sin complicar la interfaz.',
+      items: [
+        {
+          title: 'Solicitud de revisión inicial',
+          text:
+            'Ideal para empresas que detectan una necesidad pero todavía quieren validar alcance, prioridad o encaje del servicio.',
+          bullets: ['CTA consultiva.', 'Formulario corto.', 'Mensaje de “sin compromiso” cuando proceda.'],
+        },
+        {
+          title: 'Petición de propuesta técnica',
+          text:
+            'Pensada para usuarios más avanzados que ya han entendido el servicio y necesitan aterrizarlo a su edificio, instalación o contexto operativo.',
+          bullets: ['Captura de servicio o sector.', 'Contexto suficiente para responder mejor.', 'Ruta clara hacia equipo técnico/comercial.'],
+        },
+        {
+          title: 'Consulta por urgencia o incidencia',
+          text:
+            'Cuando la necesidad es inmediata, la página debe dar prioridad visual al canal más rápido sin obligar a un formulario largo.',
+          bullets: ['Teléfono visible.', 'Microcopy directo.', 'Menos pasos para actuar.'],
+        },
+        {
+          title: 'Contacto desde contenido informacional',
+          text:
+            'Usuarios que llegan desde normativa o guías necesitan un mensaje más consultivo, menos comercial y muy orientado a resolver la duda concreta.',
+          bullets: ['Transición suave desde SEO informacional.', 'Confianza reforzada.', 'Menos agresividad comercial.'],
+        },
+      ],
+    }}
+    visual={{
+      title: 'Un bloque visual sobrio puede reforzar confianza sin distraer del objetivo principal',
+      text:
+        'En contacto, la parte visual debe acompañar la decisión y no competir con ella. Un entorno técnico real o una imagen de revisión PCI ayuda a sostener la credibilidad mientras el usuario avanza hacia el CTA.',
+      image: '/landing/empresas-instalaciones-contra-incendios-2.webp',
+      alt: 'Técnico revisando una instalación contra incendios en una empresa',
+    }}
+    differentiators={{
+      title: 'La diferencia está en eliminar dudas justo antes de convertir',
+      intro:
+        'El benchmark deja una idea simple: la página de contacto rinde mejor cuando combina claridad, mínima fricción y señales suficientes de confianza.',
+      items: [
+        {
+          title: 'Mensaje de siguiente paso',
+          text: 'Explicar qué ocurrirá tras el envío reduce incertidumbre y hace más fácil completar la acción.',
+        },
+        {
+          title: 'Canales alternativos bien jerarquizados',
+          text: 'Llamada, correo y formulario deben convivir con orden, según el nivel de urgencia y el tipo de usuario.',
+        },
+        {
+          title: 'Formulario útil, no invasivo',
+          text: 'Pedir solo lo necesario favorece más envíos y mejora la percepción general del proceso.',
+        },
+        {
+          title: 'Conexión natural con el sitio',
+          text: 'El contenido de contacto debe sentirse como la continuación lógica del recorrido previo, no como una pantalla aislada.',
+        },
+      ]
+    }}
+    proof={{
+      title: 'La confianza final se apoya en claridad, contexto y sensación de acompañamiento',
+      intro:
+        'En este tramo del funnel, los elementos más persuasivos suelen ser los que ayudan al usuario a entender que recibirá una respuesta útil y proporcionada a su necesidad.',
+      items: [
+        {
+          highlight: 'Proceso',
+          title: 'Primer paso fácil de dar',
+          text: 'Cuando el esfuerzo percibido es bajo, aumenta la probabilidad de completar el contacto incluso en usuarios menos decididos.',
+        },
+        {
+          highlight: 'Contexto',
+          title: 'Consulta mejor orientada',
+          text: 'Pedir el tipo de necesidad o la ubicación mejora mucho la calidad de la primera respuesta y la percepción del servicio.',
+        },
+        {
+          highlight: 'Seguridad',
+          title: 'Cierre sin presión excesiva',
+          text: 'La promesa de revisión, propuesta o conversación inicial suele convertir mejor que una venta demasiado directa en esta fase.',
+        },
+      ]
+    }}
+    comparison={{
+      title: 'Qué mejora esta estructura frente a una página de contacto genérica',
+      intro:
+        'En el último paso del embudo, pequeños cambios de claridad y jerarquía pueden marcar una diferencia importante en conversión.',
+      rows: [
+        {
+          topic: 'Fricción',
+          ours: 'Pide lo justo y ofrece canales alternativos visibles.',
+          alternative: 'Obliga a completar más pasos o deja dudas sobre cómo avanzar.',
+        },
+        {
+          topic: 'Calidad del lead',
+          ours: 'Recoge contexto clave para responder con criterio.',
+          alternative: 'Genera contactos más ambiguos o difíciles de priorizar.',
+        },
+        {
+          topic: 'Coherencia',
+          ours: 'Cierra el recorrido con el mismo tono claro del resto del sitio.',
+          alternative: 'Rompe la experiencia con una pantalla poco trabajada.',
+        },
+      ]
+    }}
+    faqs={faqs}
+    finalCta={{
+      title: 'Activa el siguiente paso con una página de contacto pensada para convertir mejor',
+      text: 'Si quieres cerrar el recorrido con una experiencia más clara, más útil y mejor conectada con servicios, sectores y normativa, podemos definir el enfoque de conversión adecuado.',
+      primary: { href: '/contacto', label: 'Solicitar revisión del flujo de contacto' },
+      secondary: { href: '/casos-de-exito', label: 'Ver casos de éxito' },
+    }}
+    related={{
+      title: 'Antes de escribirnos, puedes completar el contexto desde estas páginas',
+      links: [
+        {
+          href: '/servicios',
+          label: 'Servicios PCI',
+          description: 'Comprueba qué solución encaja mejor con tu necesidad antes de dar el siguiente paso.',
+        },
+        {
+          href: '/normativa',
+          label: 'Normativa PCI',
+          description: 'Aclara dudas de cumplimiento y tradúcelas a una conversación más útil en el primer contacto.',
+        },
+        {
+          href: '/casos-de-exito',
+          label: 'Casos de éxito',
+          description: 'Valida proyectos y resultados parecidos al escenario que quieres resolver.',
+        },
+      ]
+    }}
   />
 </BaseLayout>

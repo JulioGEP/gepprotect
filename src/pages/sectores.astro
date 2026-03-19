@@ -1,34 +1,231 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageDraft from '../components/PageDraft.astro';
+import InteriorPageLayout from '../components/InteriorPageLayout.astro';
+
+const valueItems = [
+  {
+    title: 'Prioridades por actividad',
+    text: 'Cada sector necesita una combinación distinta de detección, extinción, evacuación y mantenimiento según su operativa y nivel de riesgo.',
+  },
+  {
+    title: 'Menos fricción en la implantación',
+    text: 'La planificación por fases ayuda a intervenir sin bloquear producción, logística, atención al público o disponibilidad del edificio.',
+  },
+  {
+    title: 'Documentación más útil',
+    text: 'Los responsables de mantenimiento, prevención y dirección reciben criterios claros para revisar actuaciones, incidencias y próximos hitos.',
+  },
+  {
+    title: 'Keywords sectoriales integradas',
+    text: 'La página responde a búsquedas como PCI para naves industriales, mantenimiento contra incendios en hoteles o protección contra incendios en retail.',
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Por qué crear una página de sectores y no solo una página de servicios?',
+    answer:
+      'Porque el usuario sectorial no busca solo un sistema; busca una solución compatible con su operativa, su nivel de riesgo y sus condicionantes de cumplimiento.',
+  },
+  {
+    question: '¿Qué sectores tienen más diferencias dentro de una estrategia PCI?',
+    answer:
+      'Industria, logística, hotelería, retail y edificios terciarios suelen requerir enfoques muy distintos en tiempos de implantación, criticidad operativa y coordinación documental.',
+  },
+  {
+    question: '¿Esta página sirve para captar búsquedas long tail?',
+    answer:
+      'Sí. Bien trabajada, permite abrir subpáginas y clusters por vertical con términos más concretos y una intención de compra más avanzada.',
+  },
+  {
+    question: '¿Cómo se conecta esta página con la conversión?',
+    answer:
+      'Relacionando cada vertical con los servicios aplicables, con ejemplos de uso y con un CTA final para solicitar una revisión alineada con el sector del cliente.',
+  },
+];
 ---
 
 <BaseLayout
   title="Sectores | Soluciones PCI por tipo de negocio"
-  description="Borrador de la página Sectores de GEP Protect para captación SEO por verticales de cliente."
+  description="Soluciones de protección contra incendios adaptadas a industria, logística, retail, hoteles y edificios terciarios con enfoque operativo y SEO sectorial."
 >
-  <PageDraft
+  <InteriorPageLayout
     eyebrow="Sectores"
     title="Soluciones de protección contra incendios adaptadas a cada sector"
-    summary="Esta página debe demostrar que GEP Protect no vende solo producto, sino soluciones sectoriales. El objetivo es hablar el idioma operativo de cada vertical (industrial, logístico, comunidades, hotelero, retail, etc.)."
-    focus="Capta intención de búsqueda sectorial, por ejemplo “PCI para naves industriales” o “mantenimiento contra incendios en hoteles”, mejorando relevancia y conversión frente a páginas genéricas."
-    sections={[
-      {
-        title: 'Narrativa por vertical',
-        text: 'Para cada sector: riesgos típicos, normativa más crítica, necesidades de operación y formato de servicio recomendado (preventivo, 24/7, auditoría, renovación).',
-      },
-      {
-        title: 'Casuística real',
-        text: 'Incluir ejemplos de incidencias evitadas, tiempos de implantación y resultados de cumplimiento para reforzar autoridad y facilitar decisiones rápidas.',
-      },
-      {
-        title: 'Conexión con contenido pilar',
-        text: 'Cada sector enlaza a servicios concretos, artículos de normativa y casos de éxito, creando un clúster SEO sólido y fácil de escalar.',
-      },
-      {
-        title: 'Conversión contextual',
-        text: 'CTA con lenguaje sectorial: “Evaluar riesgos de mi planta”, “Auditar mi comunidad”, “Plan PCI para mi cadena hotelera”.',
-      },
-    ]}
+    intro="Diseñamos páginas interiores pensadas para captar búsquedas sectoriales con una propuesta clara desde el primer scroll: qué necesita cada tipo de empresa, para quién está pensada la solución y qué beneficio operativo obtiene al implantar o mantener correctamente su PCI."
+    audience="Responsables de mantenimiento, operaciones, prevención y dirección en industria, logística, retail, hoteles y edificios terciarios."
+    benefit="Más relevancia sectorial, mejor conversión y un discurso útil para usuarios que ya comparan soluciones reales."
+    miniCta={{ href: '/contacto', label: 'Ver cómo aterrizar este enfoque en tu sector' }}
+    valueTitle="Una página sectorial debe dejar claro en segundos por qué tu realidad no se parece a la de cualquier otro edificio."
+    valueItems={valueItems}
+    core={{
+      title: 'Protección contra incendios por sector: qué cambia y por qué importa para captar mejor',
+      intro:
+        'El benchmark deja una idea clara: las páginas que mejor funcionan no se limitan a enumerar productos. Explican el contexto del cliente, reducen incertidumbre y conectan la solución con continuidad operativa, cumplimiento y tiempos de implantación.',
+      blocks: [
+        {
+          title: 'Qué es exactamente una página sectorial PCI',
+          text:
+            'Es una landing interior orientada a una vertical concreta. No parte del catálogo interno, sino de la intención de búsqueda del usuario: riesgos habituales, necesidades de operación, tipo de instalación y preguntas que aparecen antes de pedir una propuesta.',
+          bullets: [
+            'Habla el lenguaje del sector y no del organigrama interno.',
+            'Introduce keywords secundarias sin sonar forzada.',
+            'Aterriza el servicio en problemas reales y no en mensajes genéricos.',
+          ],
+        },
+        {
+          title: 'Cómo funciona dentro de una estrategia SEO',
+          text:
+            'La página actúa como hub de captación para búsquedas sectoriales y enlaza a servicios, normativa y casos de éxito. Así gana profundidad semántica, reparte autoridad interna y mejora la navegación del usuario desde una intención más concreta.',
+          bullets: [
+            'Capta búsquedas de media y larga cola.',
+            'Facilita interlinking entre páginas de servicio y contenido pilar.',
+            'Reduce rebote al responder antes a la intención del visitante.',
+          ],
+        },
+        {
+          title: 'Por qué es importante para negocio y conversión',
+          text:
+            'Cuando una empresa siente que la página entiende su operativa, la conversación comercial empieza más avanzada. El usuario ya no pregunta solo “qué hacéis”, sino “cómo lo aplicaríais en mi caso”.',
+          bullets: [
+            'Acorta el tiempo de comprensión de la oferta.',
+            'Mejora la calidad del lead frente a páginas genéricas.',
+            'Permite CTA y prueba social con contexto de uso real.',
+          ],
+        },
+      ],
+    }}
+    useCases={{
+      title: 'Aplicaciones por tipo de cliente para que cada visitante se identifique rápido',
+      intro:
+        'La clave UX está en que el usuario se vea reflejado sin esfuerzo. Estas son algunas rutas de contenido que mejor conectan con búsquedas sectoriales y necesidades concretas.',
+      items: [
+        {
+          title: 'Industria y producción',
+          text:
+            'Empresas con riesgo operativo alto, necesidad de continuidad, revisión de sistemas críticos y coordinación con producción o mantenimiento interno.',
+          bullets: ['Paradas planificadas por fases.', 'Cobertura de equipos y zonas de riesgo.', 'Documentación clara para revisión técnica y auditorías.'],
+        },
+        {
+          title: 'Logística y almacenes',
+          text:
+            'Centros donde la prioridad es intervenir sin romper flujos de entrada, salida, picking o almacenamiento, manteniendo trazabilidad y tiempos controlados.',
+          bullets: ['Planificación con impacto mínimo sobre la operación.', 'Visibilidad sobre incidencias y mantenimiento.', 'Escalabilidad por centros o delegaciones.'],
+        },
+        {
+          title: 'Retail, hoteles y pública concurrencia',
+          text:
+            'Espacios donde la experiencia del usuario final, la disponibilidad del edificio y la coordinación con aperturas o campañas son determinantes.',
+          bullets: ['Implantación compatible con actividad comercial.', 'Mayor foco en evacuación y señalización.', 'Comunicación simple para equipos no técnicos.'],
+        },
+        {
+          title: 'Oficinas, terciario y comunidades complejas',
+          text:
+            'Entornos que necesitan orden documental, mantenimiento estable y una gestión más clara de responsabilidades entre propiedad, facility y proveedores.',
+          bullets: ['Seguimiento trazable.', 'Mensajes comprensibles para varios interlocutores.', 'Conexión con normativa y soporte técnico.'],
+        },
+      ],
+    }}
+    visual={{
+      title: 'Haz tangible la propuesta con un esquema sectorial o una demo de implantación real',
+      text:
+        'Un bloque visual bien elegido reduce fricción porque convierte un discurso técnico en una lectura inmediata: dónde se interviene, cómo se planifica y qué impacto operativo tiene la solución en cada tipo de instalación.',
+      image: '/landing/importancia-plan-autoproteccion.webp',
+      alt: 'Equipo técnico revisando un plan de actuación y protección contra incendios en un entorno empresarial',
+    }}
+    differentiators={{
+      title: 'Una página sectorial funciona mejor cuando diferencia tiempos, criterio técnico y utilidad real',
+      intro:
+        'Las mejores ideas del benchmark comparten un patrón: menos discurso corporativo y más claridad sobre cómo se adapta el servicio al negocio del cliente.',
+      items: [
+        {
+          title: 'Diagnóstico vinculado a operativa',
+          text: 'No se plantea la misma solución para una nave con producción continua que para un hotel con alta ocupación o una cadena retail con varias aperturas al año.',
+        },
+        {
+          title: 'Implantación por fases razonables',
+          text: 'La página puede prometer coordinación y orden sin caer en generalidades, explicando cómo se minimizan bloqueos sobre la actividad principal.',
+        },
+        {
+          title: 'Lenguaje entendible para varios perfiles',
+          text: 'Dirección, mantenimiento y prevención necesitan ver el valor desde ángulos distintos. La estructura acompasa esos puntos de vista.',
+        },
+        {
+          title: 'Interlinking útil y no decorativo',
+          text: 'Cada vertical debe abrir la puerta al servicio específico, a la normativa aplicable y a un siguiente paso comercial claro.',
+        },
+      ]
+    }}
+    proof={{
+      title: 'La credibilidad en una página sectorial se gana con pruebas concretas, no con adjetivos',
+      intro:
+        'Aunque la página no cite a terceros, puede transmitir confianza si demuestra control de tiempos, alcance y documentación. Eso es lo que más repiten los referentes que mejor convierten.',
+      items: [
+        {
+          highlight: 'Operativa',
+          title: 'Planificación visible desde el inicio',
+          text: 'El usuario percibe más confianza cuando entiende si la implantación será por fases, si habrá coordinación con actividad y qué impacto tendrá sobre su día a día.',
+        },
+        {
+          highlight: 'Cumplimiento',
+          title: 'Resultados documentables',
+          text: 'Más que prometer “calidad”, conviene hablar de revisión técnica, trazabilidad, soporte documental y preparación ante inspecciones o auditorías.',
+        },
+        {
+          highlight: 'Contexto',
+          title: 'Ejemplos por vertical',
+          text: 'Casos cortos por industria o tipo de edificio ayudan a que el visitante entienda rápido si el equipo ya resuelve situaciones parecidas a la suya.',
+        },
+      ]
+    }}
+    comparison={{
+      title: 'Qué resuelve mejor esta estructura frente a una página genérica',
+      intro:
+        'La objeción habitual es pensar que una sola página de servicios sirve para todos. En búsquedas orgánicas, el rendimiento suele mejorar cuando la propuesta se adapta al contexto del sector.',
+      rows: [
+        {
+          topic: 'Nivel de relevancia',
+          ours: 'Explica riesgos, operativa y prioridades del sector.',
+          alternative: 'Habla del servicio de forma amplia y menos contextualizada.',
+        },
+        {
+          topic: 'Conversión',
+          ours: 'El usuario identifica antes si la solución encaja con su realidad.',
+          alternative: 'Exige más esfuerzo para trasladar el mensaje a su caso concreto.',
+        },
+        {
+          topic: 'SEO',
+          ours: 'Permite captar long tail y reforzar clusters por vertical.',
+          alternative: 'Compite con keywords más genéricas y menos cualificadas.',
+        },
+      ]
+    }}
+    faqs={faqs}
+    finalCta={{
+      title: 'Convierte cada vertical en una página que informe rápido y venda con contexto',
+      text: 'Si quieres aterrizar una arquitectura sectorial con mensajes claros, podemos definir la prioridad de sectores, el enfoque SEO y el CTA más coherente para cada perfil de cliente.',
+      primary: { href: '/contacto', label: 'Solicitar revisión de arquitectura sectorial' },
+      secondary: { href: '/servicios', label: 'Ver servicios relacionados' },
+    }}
+    related={{
+      title: 'Sigue navegando por contenidos que completan la intención de búsqueda',
+      links: [
+        {
+          href: '/servicios',
+          label: 'Servicios PCI',
+          description: 'Conecta cada vertical con la solución técnica que necesita instalar, mantener o adecuar.',
+        },
+        {
+          href: '/normativa',
+          label: 'Normativa PCI',
+          description: 'Amplía el contexto con contenidos informacionales que refuerzan autoridad y captación SEO.',
+        },
+        {
+          href: '/casos-de-exito',
+          label: 'Casos de éxito',
+          description: 'Añade prueba real con ejemplos de implantación y mantenimiento aplicados a distintos entornos.',
+        },
+      ]
+    }}
   />
 </BaseLayout>

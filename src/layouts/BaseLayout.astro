@@ -8,6 +8,22 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const footerLinks = [
+  { href: '/servicios', label: 'Servicios PCI' },
+  { href: '/sectores', label: 'Sectores' },
+  { href: '/normativa', label: 'Normativa PCI' },
+  { href: '/casos-de-exito', label: 'Casos de éxito' },
+  { href: '/delegaciones', label: 'Delegaciones' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const footerKeywords = [
+  'Instalación PCI para empresas',
+  'Mantenimiento de sistemas contra incendios',
+  'Adecuación RIPCI y soporte documental',
+  'Soluciones PCI por sector y delegación',
+];
 ---
 
 <!doctype html>
@@ -28,9 +44,40 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <footer class="border-t border-red-100 bg-white">
-      <div class="container flex flex-col gap-2 py-8 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
-        <p class="font-semibold text-slate-800">GEP Protect · Grupo GEP</p>
-        <p>Diseño base alineado con la guía de marca GEPCO Formación.</p>
+      <div class="container grid gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr]">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">GEP Protect</p>
+          <h2 class="mt-4 text-2xl font-extrabold tracking-tight text-slate-900">Protección contra incendios para empresas con foco en claridad, cumplimiento y continuidad.</h2>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-slate-600">
+            Arquitectura SEO y mensajes pensados para instalación, mantenimiento, adecuación normativa, sectores y captación local sin depender de una home excesivamente visual.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">Enlaces clave</h3>
+          <ul class="mt-4 grid gap-3 text-sm text-slate-600">
+            {footerLinks.map((link) => (
+              <li>
+                <a href={link.href} class="transition hover:text-[#e1062c]">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">Keywords secundarias</h3>
+          <ul class="mt-4 grid gap-3 text-sm text-slate-600">
+            {footerKeywords.map((keyword) => (
+              <li class="rounded-2xl border border-red-100 bg-red-50/60 px-4 py-3">{keyword}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-red-100 bg-red-50/50">
+        <div class="container flex flex-col gap-3 py-5 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+          <p class="font-semibold text-slate-800">GEP Protect · Grupo GEP</p>
+          <p>Diseño base alineado con una navegación interior pensada para SEO, UX y captación orgánica.</p>
+        </div>
       </div>
     </footer>
   </body>

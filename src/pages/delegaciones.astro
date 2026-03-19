@@ -1,34 +1,231 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageDraft from '../components/PageDraft.astro';
+import InteriorPageLayout from '../components/InteriorPageLayout.astro';
+
+const valueItems = [
+  {
+    title: 'SEO local con intención real',
+    text: 'La página responde a búsquedas por ciudad o provincia y prepara una arquitectura escalable para nuevas landings locales.',
+  },
+  {
+    title: 'Más claridad sobre cobertura',
+    text: 'El visitante entiende rápido si tiene equipo cercano, si puede pedir revisión y cómo se articula la atención por zona.',
+  },
+  {
+    title: 'Mejor conexión con servicios',
+    text: 'Cada delegación puede aterrizar instalación, mantenimiento, adecuación y sectores relevantes para su área de influencia.',
+  },
+  {
+    title: 'Autoridad nacional con lectura local',
+    text: 'El contenido transmite proximidad sin perder coherencia de marca ni dispersar el posicionamiento global del proyecto.',
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Qué debe resolver una página de delegaciones en el primer scroll?',
+    answer:
+      'Si GEP Protect trabaja en la zona del usuario, qué tipo de respuesta puede esperar y cómo acceder a una revisión o contacto local de forma inmediata.',
+  },
+  {
+    question: '¿Conviene crear una página por ciudad o empezar por una página hub?',
+    answer:
+      'Lo habitual es empezar por una página hub de delegaciones y, a partir de ahí, desarrollar las zonas prioritarias con suficiente demanda y contenido propio.',
+  },
+  {
+    question: '¿Qué señales ayudan más al SEO local?',
+    answer:
+      'Cobertura bien explicada, servicios asociados a la zona, sectores más frecuentes, interlinking interno y datos consistentes de contacto cuando existan.',
+  },
+  {
+    question: '¿Cómo convertir una visita local en lead?',
+    answer:
+      'Mostrando una ruta muy clara: disponibilidad, tipo de servicio, siguiente paso y CTA directo para revisión o llamada según la urgencia.',
+  },
+];
 ---
 
 <BaseLayout
   title="Delegaciones | Cobertura local de GEP Protect"
-  description="Borrador de la página Delegaciones para estrategia SEO local y captación por zona."
+  description="Cobertura local de GEP Protect para estrategia SEO geolocalizada, captación por zona y conexión entre delegaciones, servicios y contacto."
 >
-  <PageDraft
+  <InteriorPageLayout
     eyebrow="Delegaciones"
-    title="Cobertura local para una respuesta PCI cercana y rápida"
-    summary="Esta página mostrará dónde opera GEP Protect y servirá de hub para futuras landings locales por ciudad/provincia, clave para captación de demanda geolocalizada."
-    focus="Objetivo SEO local: captar búsquedas como “empresa PCI en Madrid” o “mantenimiento contra incendios Barcelona”, combinando proximidad operativa y autoridad del grupo."
-    sections={[
-      {
-        title: 'Mapa y áreas de cobertura',
-        text: 'Visualizar delegaciones activas, radios de actuación y tiempos de respuesta estimados para resolver la duda principal de disponibilidad.',
-      },
-      {
-        title: 'Plantilla de página local',
-        text: 'Cada delegación futura debe incluir servicios, sectores, normativa relevante, casos cercanos y datos de contacto local con schema LocalBusiness.',
-      },
-      {
-        title: 'Consistencia de marca',
-        text: 'Mantener tono y diseño del ecosistema GEP Group para transmitir continuidad y evitar percepción de microsite aislado.',
-      },
-      {
-        title: 'Conversión local',
-        text: 'CTA diferenciada para visita técnica en zona y llamada directa a equipo de delegación cuando proceda.',
-      },
-    ]}
+    title="Cobertura local para una respuesta PCI cercana y bien coordinada"
+    intro="La página de delegaciones debe resolver rápido una pregunta clave: si GEP Protect puede actuar en la zona del usuario y con qué nivel de cercanía. Sin hero y sin rodeos, esta estructura prioriza cobertura, contexto local y una ruta clara hacia el contacto."
+    audience="Empresas y responsables técnicos que buscan proveedor PCI por ciudad, provincia o área de actuación concreta."
+    benefit="Más visibilidad local, mejor filtrado de la demanda y una experiencia más clara para búsquedas geolocalizadas."
+    miniCta={{ href: '/contacto', label: 'Comprobar cobertura para mi zona' }}
+    valueTitle="La página local funciona mejor cuando combina proximidad, servicio y claridad operativa."
+    valueItems={valueItems}
+    core={{
+      title: 'Empresa PCI por zona: cómo estructurar una página local que posicione y convierta',
+      intro:
+        'Las páginas locales más útiles no se limitan a listar ciudades. Explican dónde se actúa, cómo se organiza la respuesta y qué servicios o sectores tienen más peso en cada mercado local.',
+      blocks: [
+        {
+          title: 'Qué es exactamente una página de delegaciones',
+          text:
+            'Es un hub interior que organiza la cobertura geográfica de la marca y sirve de base para futuras landings por ciudad o provincia, conectando demanda local con servicios, sectores y contacto.',
+          bullets: [
+            'Responde intención geolocalizada desde el primer scroll.',
+            'Ordena expansión SEO por territorios prioritarios.',
+            'Facilita navegación entre cobertura y servicios disponibles.',
+          ],
+        },
+        {
+          title: 'Cómo funciona dentro de la estrategia SEO local',
+          text:
+            'La página centraliza autoridad y distribuye relevancia hacia las URLs locales que se vayan desarrollando, evitando crear landings aisladas o demasiado parecidas entre sí.',
+          bullets: [
+            'Actúa como hub para ciudades o provincias objetivo.',
+            'Mejora el enlazado entre contenido local y servicios.',
+            'Acompaña búsquedas tipo “empresa PCI en [ciudad]”.',
+          ],
+        },
+        {
+          title: 'Por qué es importante para captar leads mejores',
+          text:
+            'El usuario local necesita confirmar disponibilidad antes incluso de valorar el servicio. Si la página resuelve esa duda pronto, el contacto se produce con menos fricción y más contexto.',
+          bullets: [
+            'Reduce rebote de visitas fuera de zona.',
+            'Aclara radios de actuación y siguientes pasos.',
+            'Refuerza sensación de cercanía y coordinación.',
+          ],
+        },
+      ],
+    }}
+    useCases={{
+      title: 'Aplicaciones por territorio para conectar con intenciones de búsqueda concretas',
+      intro:
+        'No todas las búsquedas locales persiguen lo mismo. La estructura debe contemplar escenarios distintos para responder mejor y ordenar la expansión del sitio.',
+      items: [
+        {
+          title: 'Zonas con alta densidad industrial',
+          text:
+            'Delegaciones orientadas a industria y logística necesitan priorizar disponibilidad técnica, continuidad operativa y capacidad de coordinar mantenimiento o adecuación.',
+          bullets: ['Servicio técnico vinculado a actividad productiva.', 'Mayor peso de mantenimiento y revisiones.', 'Relación estrecha con sectores industriales.'],
+        },
+        {
+          title: 'Capitales y áreas metropolitanas',
+          text:
+            'Aquí suelen convivir oficinas, retail, hoteles y edificios terciarios, por lo que la página debe combinar variedad de servicios y mensajes de respuesta ágil.',
+          bullets: ['Cobertura urbana clara.', 'Mayor diversidad sectorial.', 'CTA rápidos para revisión o visita técnica.'],
+        },
+        {
+          title: 'Expansión por provincias prioritarias',
+          text:
+            'El hub permite ordenar qué zonas abrir primero según demanda, competencia o capacidad operativa, evitando lanzar páginas sin profundidad suficiente.',
+          bullets: ['Escalado más controlado.', 'Mejor consistencia editorial.', 'Relación natural entre hub y subpáginas locales.'],
+        },
+        {
+          title: 'Clientes con varias sedes',
+          text:
+            'Una estructura local bien planteada también ayuda a empresas multisede que buscan un proveedor capaz de coordinar actuaciones en distintas ubicaciones.',
+          bullets: ['Visión de cobertura multiubicación.', 'Más confianza en despliegues por red.', 'Conexión con delegaciones y contacto central.'],
+        },
+      ],
+    }}
+    visual={{
+      title: 'Mapa, radios de cobertura o esquema de zonas: lo visual debe despejar la duda de disponibilidad',
+      text:
+        'La representación visual de delegaciones hace tangible la capacidad de respuesta y evita que el visitante tenga que interpretar un listado largo de ubicaciones sin contexto operativo.',
+      image: '/landing/home-servicios-pci.webp',
+      alt: 'Equipo técnico de protección contra incendios trabajando en instalaciones para empresas',
+    }}
+    differentiators={{
+      title: 'La página local convence más cuando une cercanía, orden y utilidad',
+      intro:
+        'Los mejores enfoques del benchmark no venden solo presencia; explican cobertura, coordinación y el tipo de respuesta que puede esperar el cliente en su zona.',
+      items: [
+        {
+          title: 'Cobertura explicada con criterio',
+          text: 'Más útil que listar ciudades sin contexto es aclarar áreas prioritarias, sectores frecuentes y siguiente paso de contacto.',
+        },
+        {
+          title: 'Escalabilidad SEO',
+          text: 'El hub permite crecer por territorios sin romper consistencia editorial ni duplicar mensajes casi idénticos.',
+        },
+        {
+          title: 'Conexión directa con servicio',
+          text: 'La ubicación no debe quedarse aislada: tiene que enlazar a mantenimiento, instalación, adecuación y sectores relevantes.',
+        },
+        {
+          title: 'Conversión local sencilla',
+          text: 'Cuanto menos tenga que pensar el usuario para confirmar disponibilidad y pedir revisión, mejor funcionará la página.',
+        },
+      ]
+    }}
+    proof={{
+      title: 'La confianza local se construye con señales de respuesta y consistencia',
+      intro:
+        'Aunque la página no necesite abundar en claims, sí debe transmitir que existe una forma ordenada de operar por zonas y de conectar cada consulta con el equipo adecuado.',
+      items: [
+        {
+          highlight: 'Cobertura',
+          title: 'Disponibilidad mejor entendida',
+          text: 'Cuando el usuario identifica su zona y el tipo de atención prevista, crece la probabilidad de contacto cualificado.',
+        },
+        {
+          highlight: 'Coordinación',
+          title: 'Escenarios locales más claros',
+          text: 'La estructura ayuda a explicar cómo se presta el servicio en cada territorio sin generar sensación de improvisación.',
+        },
+        {
+          highlight: 'Escala',
+          title: 'Preparada para crecer',
+          text: 'Un hub bien trabajado facilita incorporar futuras delegaciones o áreas sin perder orden ni coherencia de marca.',
+        },
+      ]
+    }}
+    comparison={{
+      title: 'Qué mejora esta página frente a una simple lista de ubicaciones',
+      intro:
+        'En SEO local y en UX suele rendir mejor una página que resuelve intención, no una colección de nombres propios sin jerarquía ni siguiente paso.',
+      rows: [
+        {
+          topic: 'Intención de búsqueda',
+          ours: 'Confirma cobertura, tipo de servicio y ruta de contacto.',
+          alternative: 'Solo enumera ubicaciones sin contexto.',
+        },
+        {
+          topic: 'Escalabilidad',
+          ours: 'Sirve de base para URLs locales futuras.',
+          alternative: 'No ordena bien el crecimiento del sitio.',
+        },
+        {
+          topic: 'Conversión',
+          ours: 'Reduce fricción al visitante que ya busca proveedor en su zona.',
+          alternative: 'Obliga a navegar más para validar disponibilidad.',
+        },
+      ]
+    }}
+    faqs={faqs}
+    finalCta={{
+      title: 'Ordena tu captación local con una página que responda cobertura y convierta antes',
+      text: 'Si quieres priorizar ciudades, provincias o delegaciones con más potencial SEO y comercial, podemos definir la arquitectura local y los mensajes clave de cada zona.',
+      primary: { href: '/contacto', label: 'Solicitar revisión de estrategia local' },
+      secondary: { href: '/servicios', label: 'Ver servicios disponibles' },
+    }}
+    related={{
+      title: 'Sigue el recorrido con páginas que completan la captación local',
+      links: [
+        {
+          href: '/servicios',
+          label: 'Servicios PCI',
+          description: 'Conecta la intención local con instalación, mantenimiento o adecuación según la necesidad del cliente.',
+        },
+        {
+          href: '/sectores',
+          label: 'Sectores',
+          description: 'Aterriza qué verticales pueden tener más peso en cada zona o delegación.',
+        },
+        {
+          href: '/contacto',
+          label: 'Contacto',
+          description: 'Abre el canal directo para confirmar disponibilidad y solicitar una revisión inicial.',
+        },
+      ]
+    }}
   />
 </BaseLayout>
