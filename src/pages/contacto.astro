@@ -1,231 +1,168 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InteriorPageLayout from '../components/InteriorPageLayout.astro';
 
-const valueItems = [
-  {
-    title: 'Fricción mínima',
-    text: 'La página prioriza campos esenciales, contexto suficiente y una ruta rápida para usuarios que ya quieren hablar contigo.',
-  },
-  {
-    title: 'Leads más cualificados',
-    text: 'Al pedir tipo de necesidad, ubicación y canal preferido, el equipo recibe información útil para responder con más criterio.',
-  },
-  {
-    title: 'Canales visibles',
-    text: 'Teléfono, email y CTA principal conviven de forma clara para cubrir tanto urgencia como solicitud de propuesta técnica.',
-  },
-  {
-    title: 'Cierre SEO/CRO',
-    text: 'La página final del recorrido debe reforzar confianza, resolver objeciones básicas y facilitar la conversión sin ruido visual.',
-  },
+const quickNotes = [
+  'Texto de ejemplo para explicar en una línea qué ocurre al enviar el formulario.',
+  'Texto aleatorio para reforzar cercanía, rapidez de respuesta o revisión inicial.',
+  'Texto placeholder para indicar que después aquí añadiremos el mensaje definitivo.',
 ];
 
-const faqs = [
+const delegations = [
   {
-    question: '¿Qué datos conviene pedir en un primer contacto PCI?',
-    answer:
-      'Empresa, ubicación, tipo de necesidad, teléfono o email y una breve descripción del contexto. Suele ser suficiente para iniciar la conversación sin crear fricción innecesaria.',
+    city: 'Madrid',
+    area: 'Zona centro',
+    text: 'Texto random sobre esta delegación para sustituir más adelante. Aquí podemos hablar de cobertura, tipo de clientes o tiempos de respuesta.',
   },
   {
-    question: '¿Es mejor un formulario largo o corto?',
-    answer:
-      'En la mayoría de casos funciona mejor un formulario corto y útil, complementado con rutas alternativas como llamada o correo para necesidades urgentes.',
+    city: 'Barcelona',
+    area: 'Cataluña',
+    text: 'Texto de prueba para describir esta delegación. Después podremos añadir información real, servicios destacados o sectores principales.',
   },
   {
-    question: '¿Qué mensajes ayudan a convertir más en esta página?',
-    answer:
-      'Los que aclaran qué pasará después del envío, cuánto compromiso implica el primer paso y qué tipo de ayuda puede esperar el usuario.',
+    city: 'Valencia',
+    area: 'Levante',
+    text: 'Texto temporal para esta delegación. Sirve como hueco para una explicación breve y fácil de escanear.',
   },
   {
-    question: '¿Cómo se enlaza contacto con el resto del sitio?',
-    answer:
-      'Como cierre natural de servicios, sectores, normativa y casos de éxito, reforzando la sensación de recorrido lógico y no de salida forzada.',
+    city: 'Sevilla',
+    area: 'Andalucía',
+    text: 'Texto placeholder para futura redacción. Aquí luego podemos incluir ciudades cercanas, cobertura o una frase comercial sencilla.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Contacto | Solicitar inspección o propuesta PCI"
-  description="Página de contacto PCI optimizada para captar leads cualificados con mínima fricción, confianza reforzada y rutas claras hacia revisión o propuesta."
+  title="Contacto | Propuesta sencilla"
+  description="Propuesta muy sencilla para la página de contacto con formulario básico y bloque inferior de delegaciones."
 >
-  <InteriorPageLayout
-    eyebrow="Contacto"
-    title="Hablemos de tu necesidad PCI sin fricción y con el contexto justo"
-    intro="La página de contacto debe resolver de inmediato qué puede hacer el usuario aquí, para quién está pensada y qué obtiene al dar el siguiente paso. Con una jerarquía clara y una entrada directa al contenido, esta estructura favorece que el visitante pase de la duda a la acción con menos esfuerzo."
-    audience="Empresas, responsables técnicos y perfiles de dirección que necesitan una revisión, una propuesta o una conversación inicial sobre instalación, mantenimiento o adecuación PCI."
-    benefit="Más conversiones cualificadas y menos abandono en el último paso del recorrido."
-    miniCta={{ href: '/servicios', label: 'Prefiero revisar antes los servicios disponibles' }}
-    valueTitle="La mejor página de contacto es la que permite avanzar rápido sin obligar al usuario a pensar demasiado."
-    valueItems={valueItems}
-    core={{
-      title: 'Contacto PCI: cómo estructurar una página que cierre mejor la intención de búsqueda',
-      intro:
-        'En las webs que mejor convierten, la página de contacto no es un trámite. Es un activo de captación que reduce objeciones, ordena el lead y explica con claridad qué ocurrirá tras el primer paso.',
-      blocks: [
-        {
-          title: 'Qué es exactamente una buena página de contacto',
-          text:
-            'Es una página pensada para transformar intención en acción. Debe filtrar la necesidad mínima imprescindible y, al mismo tiempo, dar seguridad suficiente para completar el formulario o usar un canal alternativo.',
-          bullets: [
-            'Indica para qué tipo de consultas está pensada.',
-            'Pide pocos datos pero útiles.',
-            'Anticipa qué sucederá después del contacto.',
-          ],
-        },
-        {
-          title: 'Cómo funciona dentro del embudo',
-          text:
-            'Recoge tráfico procedente de servicios, normativa, sectores y casos de éxito. Por eso necesita coherencia con todo lo leído antes y un mensaje final que no rompa la experiencia.',
-          bullets: [
-            'Cierra búsquedas transaccionales y comparativas.',
-            'Sirve como CTA final en múltiples landings interiores.',
-            'Convierte mejor cuando mantiene el tono y la claridad del sitio.',
-          ],
-        },
-        {
-          title: 'Por qué es importante para la calidad del lead',
-          text:
-            'Un formulario bien planteado no solo capta más; capta mejor. Permite priorizar, responder con contexto y evitar intercambios innecesarios antes de entender el problema real del cliente.',
-          bullets: [
-            'Acelera la primera respuesta comercial o técnica.',
-            'Ordena necesidades por tipo de servicio o urgencia.',
-            'Reduce pérdida de oportunidades en el último clic.',
-          ],
-        },
-      ],
-    }}
-    useCases={{
-      title: 'Aplicaciones pensadas para distintos momentos de decisión',
-      intro:
-        'No todos los usuarios llegan a contacto con la misma urgencia. La página debe contemplar recorridos distintos sin complicar la interfaz.',
-      items: [
-        {
-          title: 'Solicitud de revisión inicial',
-          text:
-            'Ideal para empresas que detectan una necesidad pero todavía quieren validar alcance, prioridad o encaje del servicio.',
-          bullets: ['CTA consultiva.', 'Formulario corto.', 'Mensaje de “sin compromiso” cuando proceda.'],
-        },
-        {
-          title: 'Petición de propuesta técnica',
-          text:
-            'Pensada para usuarios más avanzados que ya han entendido el servicio y necesitan aterrizarlo a su edificio, instalación o contexto operativo.',
-          bullets: ['Captura de servicio o sector.', 'Contexto suficiente para responder mejor.', 'Ruta clara hacia equipo técnico/comercial.'],
-        },
-        {
-          title: 'Consulta por urgencia o incidencia',
-          text:
-            'Cuando la necesidad es inmediata, la página debe dar prioridad visual al canal más rápido sin obligar a un formulario largo.',
-          bullets: ['Teléfono visible.', 'Microcopy directo.', 'Menos pasos para actuar.'],
-        },
-        {
-          title: 'Contacto desde contenido informacional',
-          text:
-            'Usuarios que llegan desde normativa o guías necesitan un mensaje más consultivo, menos comercial y muy orientado a resolver la duda concreta.',
-          bullets: ['Transición suave desde SEO informacional.', 'Confianza reforzada.', 'Menos agresividad comercial.'],
-        },
-      ],
-    }}
-    visual={{
-      title: 'Un bloque visual sobrio puede reforzar confianza sin distraer del objetivo principal',
-      text:
-        'En contacto, la parte visual debe acompañar la decisión y no competir con ella. Un entorno técnico real o una imagen de revisión PCI ayuda a sostener la credibilidad mientras el usuario avanza hacia el CTA.',
-      image: '/landing/empresas-instalaciones-contra-incendios-2.webp',
-      alt: 'Técnico revisando una instalación contra incendios en una empresa',
-    }}
-    differentiators={{
-      title: 'La diferencia está en eliminar dudas justo antes de convertir',
-      intro:
-        'El benchmark deja una idea simple: la página de contacto rinde mejor cuando combina claridad, mínima fricción y señales suficientes de confianza.',
-      items: [
-        {
-          title: 'Mensaje de siguiente paso',
-          text: 'Explicar qué ocurrirá tras el envío reduce incertidumbre y hace más fácil completar la acción.',
-        },
-        {
-          title: 'Canales alternativos bien jerarquizados',
-          text: 'Llamada, correo y formulario deben convivir con orden, según el nivel de urgencia y el tipo de usuario.',
-        },
-        {
-          title: 'Formulario útil, no invasivo',
-          text: 'Pedir solo lo necesario favorece más envíos y mejora la percepción general del proceso.',
-        },
-        {
-          title: 'Conexión natural con el sitio',
-          text: 'El contenido de contacto debe sentirse como la continuación lógica del recorrido previo, no como una pantalla aislada.',
-        },
-      ]
-    }}
-    proof={{
-      title: 'La confianza final se apoya en claridad, contexto y sensación de acompañamiento',
-      intro:
-        'En este tramo del funnel, los elementos más persuasivos suelen ser los que ayudan al usuario a entender que recibirá una respuesta útil y proporcionada a su necesidad.',
-      items: [
-        {
-          highlight: 'Proceso',
-          title: 'Primer paso fácil de dar',
-          text: 'Cuando el esfuerzo percibido es bajo, aumenta la probabilidad de completar el contacto incluso en usuarios menos decididos.',
-        },
-        {
-          highlight: 'Contexto',
-          title: 'Consulta mejor orientada',
-          text: 'Pedir el tipo de necesidad o la ubicación mejora mucho la calidad de la primera respuesta y la percepción del servicio.',
-        },
-        {
-          highlight: 'Seguridad',
-          title: 'Cierre sin presión excesiva',
-          text: 'La promesa de revisión, propuesta o conversación inicial suele convertir mejor que una venta demasiado directa en esta fase.',
-        },
-      ]
-    }}
-    comparison={{
-      title: 'Qué mejora esta estructura frente a una página de contacto genérica',
-      intro:
-        'En el último paso del embudo, pequeños cambios de claridad y jerarquía pueden marcar una diferencia importante en conversión.',
-      rows: [
-        {
-          topic: 'Fricción',
-          ours: 'Pide lo justo y ofrece canales alternativos visibles.',
-          alternative: 'Obliga a completar más pasos o deja dudas sobre cómo avanzar.',
-        },
-        {
-          topic: 'Calidad del lead',
-          ours: 'Recoge contexto clave para responder con criterio.',
-          alternative: 'Genera contactos más ambiguos o difíciles de priorizar.',
-        },
-        {
-          topic: 'Coherencia',
-          ours: 'Cierra el recorrido con el mismo tono claro del resto del sitio.',
-          alternative: 'Rompe la experiencia con una pantalla poco trabajada.',
-        },
-      ]
-    }}
-    faqs={faqs}
-    finalCta={{
-      title: 'Activa el siguiente paso con una página de contacto pensada para convertir mejor',
-      text: 'Si quieres cerrar el recorrido con una experiencia más clara, más útil y mejor conectada con servicios, sectores y normativa, podemos definir el enfoque de conversión adecuado.',
-      primary: { href: '/contacto', label: 'Solicitar revisión del flujo de contacto' },
-      secondary: { href: '/casos-de-exito', label: 'Ver casos de éxito' },
-    }}
-    related={{
-      title: 'Antes de escribirnos, puedes completar el contexto desde estas páginas',
-      links: [
-        {
-          href: '/servicios',
-          label: 'Servicios PCI',
-          description: 'Comprueba qué solución encaja mejor con tu necesidad antes de dar el siguiente paso.',
-        },
-        {
-          href: '/normativa',
-          label: 'Normativa PCI',
-          description: 'Aclara dudas de cumplimiento y tradúcelas a una conversación más útil en el primer contacto.',
-        },
-        {
-          href: '/casos-de-exito',
-          label: 'Casos de éxito',
-          description: 'Valida proyectos y resultados parecidos al escenario que quieres resolver.',
-        },
-      ]
-    }}
-  />
+  <section class="container py-8 sm:py-10">
+    <div class="rounded-[2rem] border border-red-100 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+      <p class="brand-eyebrow">Contacto</p>
+      <div class="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_22rem] lg:items-start">
+        <div>
+          <h1 class="max-w-3xl text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[3.1rem] lg:leading-[1.05]">
+            Una página de contacto muy sencilla para captar consultas sin complicaciones
+          </h1>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-slate-700 sm:text-lg sm:leading-8">
+            Texto random de introducción para sustituir después. La idea aquí es explicar en pocas líneas qué puede hacer el usuario, por qué debería escribirnos y qué tipo de ayuda encontrará.
+          </p>
+
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            {quickNotes.map((note) => (
+              <article class="rounded-2xl border border-red-100 bg-red-50/70 p-4 text-sm leading-6 text-slate-700">
+                {note}
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <aside class="rounded-[1.75rem] border border-red-100 bg-red-50 p-5 sm:p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">Contacto rápido</p>
+          <div class="mt-4 space-y-4 text-sm leading-6 text-slate-700">
+            <div>
+              <p class="font-semibold text-slate-900">Teléfono</p>
+              <p>900 000 000</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-900">Email</p>
+              <p>hola@empresa-ejemplo.com</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-900">Horario</p>
+              <p>Lunes a viernes · 09:00 a 18:00</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12 sm:pb-16">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_24rem]">
+      <div class="rounded-[2rem] border border-red-100 bg-white p-6 shadow-sm sm:p-8">
+        <div class="max-w-2xl">
+          <p class="brand-eyebrow">Formulario</p>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+            Un formulario corto, claro y fácil de rellenar
+          </h2>
+          <p class="mt-4 text-sm leading-7 text-slate-700 sm:text-base">
+            Más texto de ejemplo para sustituir. Aquí podríamos añadir una frase breve sobre el tiempo de respuesta o sobre el tipo de consulta que queremos recibir.
+          </p>
+        </div>
+
+        <form class="mt-8 grid gap-4 sm:grid-cols-2">
+          <label class="grid gap-2 text-sm font-medium text-slate-800">
+            Nombre
+            <input type="text" placeholder="Tu nombre" class="rounded-2xl border border-red-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#e1062c]" />
+          </label>
+
+          <label class="grid gap-2 text-sm font-medium text-slate-800">
+            Empresa
+            <input type="text" placeholder="Nombre de la empresa" class="rounded-2xl border border-red-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#e1062c]" />
+          </label>
+
+          <label class="grid gap-2 text-sm font-medium text-slate-800">
+            Email
+            <input type="email" placeholder="tu@email.com" class="rounded-2xl border border-red-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#e1062c]" />
+          </label>
+
+          <label class="grid gap-2 text-sm font-medium text-slate-800">
+            Teléfono
+            <input type="tel" placeholder="600 000 000" class="rounded-2xl border border-red-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#e1062c]" />
+          </label>
+
+          <label class="grid gap-2 text-sm font-medium text-slate-800 sm:col-span-2">
+            Qué necesitas
+            <textarea rows="5" placeholder="Escribe aquí un texto random que luego sustituiremos por el contenido definitivo" class="rounded-[1.5rem] border border-red-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#e1062c]"></textarea>
+          </label>
+
+          <div class="sm:col-span-2">
+            <button type="submit" class="brand-button">Enviar solicitud</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="rounded-[2rem] border border-red-100 bg-white p-6 shadow-sm sm:p-8">
+        <p class="brand-eyebrow">Antes de enviar</p>
+        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900">Un pequeño bloque de apoyo</h2>
+        <p class="mt-4 text-sm leading-7 text-slate-700">
+          Texto placeholder para acompañar el formulario con una explicación simple. Aquí luego podemos añadir confianza, una promesa de respuesta o una nota comercial muy breve.
+        </p>
+
+        <ul class="mt-6 grid gap-3 text-sm text-slate-700">
+          <li class="flex gap-3 rounded-2xl border border-red-100 bg-red-50/60 p-4"><span class="brand-check">✓</span><span>Texto random para una ventaja o mensaje corto.</span></li>
+          <li class="flex gap-3 rounded-2xl border border-red-100 bg-red-50/60 p-4"><span class="brand-check">✓</span><span>Texto de ejemplo para indicar el siguiente paso.</span></li>
+          <li class="flex gap-3 rounded-2xl border border-red-100 bg-red-50/60 p-4"><span class="brand-check">✓</span><span>Texto temporal que después cambiaremos por uno real.</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="container pb-16 sm:pb-20">
+    <div class="rounded-[2rem] border border-red-100 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+      <div class="max-w-3xl">
+        <p class="brand-eyebrow">Delegaciones</p>
+        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+          Debajo del formulario, un bloque muy simple para hablar de delegaciones
+        </h2>
+        <p class="mt-4 text-base leading-7 text-slate-700 sm:text-lg">
+          Texto random para introducir las delegaciones. La idea es que este bloque quede limpio: una breve explicación arriba y tarjetas sencillas debajo para que luego podamos rellenarlo con el contenido bueno.
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {delegations.map((delegation) => (
+          <article class="brand-card h-full">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#b40422]">{delegation.area}</p>
+            <h3 class="mt-3 text-xl font-bold text-slate-900">{delegation.city}</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-700">{delegation.text}</p>
+            <a href="/delegaciones" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#b40422] transition hover:text-[#e1062c]">
+              Ver más
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
