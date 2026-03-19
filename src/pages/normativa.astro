@@ -1,231 +1,264 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InteriorPageLayout from '../components/InteriorPageLayout.astro';
 
-const valueItems = [
+const focusAreas = [
   {
-    title: 'Normativa explicada sin ruido',
-    text: 'La página responde rápido qué exige cada marco regulatorio, a quién afecta y qué decisión práctica conviene tomar.',
+    title: 'RIPCI: mantenimiento, revisiones y trazabilidad',
+    description:
+      'Es uno de los marcos que más condiciona la operativa diaria de una instalación PCI. La intención de búsqueda suele venir de responsables que necesitan saber qué revisar, con qué periodicidad y cómo demostrar que el sistema se mantiene en condiciones de uso.',
+    bullets: [
+      'Periodicidades de mantenimiento e inspección que afectan a extintores, BIE, detección, rociadores y otros sistemas.',
+      'Importancia del registro documental para justificar actuaciones, incidencias y correctivos.',
+      'Necesidad de traducir la exigencia normativa a un calendario realista y entendible para mantenimiento y dirección.',
+    ],
   },
   {
-    title: 'Más autoridad orgánica',
-    text: 'Los contenidos normativos ayudan a captar búsquedas informacionales con volumen y a nutrir páginas transaccionales desde una base técnica sólida.',
+    title: 'CTE DB-SI: exigencias vinculadas al edificio y su uso',
+    description:
+      'En el benchmark se repite que muchas dudas aparecen cuando cambia la ocupación, se reforma una nave o se adapta un espacio. El usuario no busca teoría aislada: necesita entender cómo impacta la norma en recorridos de evacuación, compartimentación, señalización o dotación de medios PCI.',
+    bullets: [
+      'Relación entre actividad, configuración del inmueble y medidas de seguridad exigibles.',
+      'Decisiones que suelen aparecer en reformas, ampliaciones o cambios de uso.',
+      'Necesidad de coordinar el criterio normativo con la viabilidad técnica y operativa del centro.',
+    ],
   },
   {
-    title: 'Menos texto muro',
-    text: 'La estructura por bloques, FAQs y listas facilita escaneo, retención y mejor comprensión para perfiles no jurídicos ni técnicos.',
-  },
-  {
-    title: 'Puente directo a servicio',
-    text: 'Cada explicación normativa puede cerrar con una recomendación accionable para revisión, adecuación o mantenimiento PCI.',
+    title: 'Normas UNE: detalle técnico para ejecutar y mantener con criterio',
+    description:
+      'Las páginas que mejor funcionan en la competencia no se limitan a listar normas UNE: explican cuándo conviene consultarlas y por qué resultan relevantes para instalación, mantenimiento, señalización, detección o abastecimiento de agua.',
+    bullets: [
+      'Aterrizan la norma en componentes y sistemas concretos, no en una enumeración abstracta.',
+      'Ayudan a identificar si el problema es de diseño, mantenimiento, reposición o documentación.',
+      'Conectan la consulta normativa con una actuación técnica concreta y priorizada.',
+    ],
   },
 ];
 
-const faqs = [
+const benchmarkInsights = [
   {
-    question: '¿Qué normativa interesa priorizar en una página de este tipo?',
-    answer:
-      'Los marcos que más se consultan antes de tomar decisiones: RIPCI, CTE DB-SI y normas UNE relacionadas con mantenimiento, detección, extinción y señalización.',
+    title: 'La competencia capta atención cuando simplifica',
+    text:
+      'Los mejores referentes del benchmark convierten la normativa en una lectura útil para perfiles no jurídicos. No ganan por sonar más técnicos, sino por explicar con claridad qué implica cada marco, a quién afecta y qué decisión conviene tomar primero.',
   },
   {
-    question: '¿Una página normativa también puede convertir?',
-    answer:
-      'Sí. Convierte mejor cuando aterriza la explicación en decisiones prácticas y propone el siguiente paso lógico, como revisar el estado de una instalación o preparar una adecuación.',
+    title: 'El contenido rinde más cuando baja a escenarios reales',
+    text:
+      'Inspecciones próximas, instalaciones antiguas, reformas, cambios de actividad o carencias documentales son los contextos que más se repiten. Por eso esta página plantea la normativa como una herramienta para priorizar actuaciones, no como un repositorio legal.',
   },
   {
-    question: '¿Cómo evitar que el contenido parezca demasiado técnico?',
-    answer:
-      'Priorizando preguntas reales, listados claros, definiciones breves y ejemplos de impacto sobre mantenimiento, inspecciones y continuidad operativa.',
+    title: 'La intención informacional debe enlazar con una acción',
+    text:
+      'Una página de normativa interior funciona mejor cuando, después de aclarar conceptos, ayuda a detectar si toca revisar, adecuar, regularizar o mantener. Ese puente entre duda y siguiente paso es lo que diferencia una página útil de una página meramente descriptiva.',
   },
   {
-    question: '¿Qué aporta al SEO frente a publicar solo páginas de servicios?',
-    answer:
-      'Aporta autoridad temática, amplía el rango de keywords captables y mejora el enlazado interno hacia servicios y sectores con una intención más madura.',
+    title: 'Más texto no significa más claridad',
+    text:
+      'En lugar de bloques densos y poco escaneables, el benchmark muestra mejores resultados cuando se trabaja una estructura por capas: introducción orientada a intención, desarrollo temático y cierre con propuesta de contacto para revisar el caso concreto.',
   },
 ];
+
+const actionBlocks = [
+  {
+    title: 'Cuándo conviene revisar el cumplimiento PCI',
+    description:
+      'Si hay una inspección prevista, una incidencia repetida, un cambio de actividad o dudas sobre el estado real de la instalación, lo más eficaz es hacer una revisión técnica orientada a detectar desviaciones, prioridades y documentación pendiente.',
+  },
+  {
+    title: 'Qué espera encontrar el usuario en esta página',
+    description:
+      'Un resumen claro de los marcos más consultados, una explicación del impacto práctico sobre la empresa y una orientación útil para saber si el siguiente paso es mantenimiento, adecuación o regularización.',
+  },
+  {
+    title: 'Cómo debe leerse la normativa desde negocio',
+    description:
+      'No solo como una obligación de cumplimiento, sino como una forma de proteger continuidad operativa, reducir exposición al riesgo y evitar decisiones improvisadas cuando aparece una revisión externa o una necesidad urgente de corrección.',
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: 'https://gepprotect.netlify.app/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Normativa',
+      item: 'https://gepprotect.netlify.app/normativa/',
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Normativa PCI | RIPCI, CTE y normas UNE explicadas"
-  description="Normativa PCI explicada para empresas y responsables técnicos: RIPCI, CTE y normas UNE con enfoque útil, SEO y orientación a la acción."
+  title="Normativa PCI para empresas | RIPCI, CTE DB-SI y normas UNE"
+  description="Página interior de normativa PCI con foco en RIPCI, CTE DB-SI y normas UNE para empresas que necesitan interpretar obligaciones y convertirlas en actuaciones concretas."
 >
-  <InteriorPageLayout
-    eyebrow="Normativa"
-    title="Normativa PCI explicada para responsables técnicos y de negocio"
-    intro="La página interior de normativa debe responder desde arriba a la intención de búsqueda: qué es la norma, a quién afecta y por qué importa para mantener una instalación PCI operativa, revisable y bien documentada. La clave no es sonar más técnico, sino convertir complejidad en decisiones útiles."
-    audience="Gerencia, mantenimiento, prevención, facilities y equipos que necesitan interpretar obligaciones PCI sin perder tiempo en lenguaje críptico."
-    benefit="Más autoridad SEO, más confianza y un mejor puente entre búsqueda informacional y demanda comercial cualificada."
-    miniCta={{ href: '/contacto', label: 'Pedir una revisión de cumplimiento PCI' }}
-    valueTitle="El contenido normativo que mejor funciona resuelve dudas concretas antes de intentar vender."
-    valueItems={valueItems}
-    core={{
-      title: 'RIPCI, CTE y normas UNE: cómo estructurar una página que posicione y ayude de verdad',
-      intro:
-        'En el benchmark se repite un patrón claro: la autoridad técnica gana cuando la página traduce normativa a impacto real sobre instalaciones, mantenimiento e inspecciones. Eso es lo que permite captar tráfico útil y no solo visitas curiosas.',
-      blocks: [
-        {
-          title: 'Qué es exactamente una página de normativa PCI',
-          text:
-            'Es un contenido pilar que interpreta requisitos y marcos de referencia para que el usuario entienda qué debe revisar en su instalación, con qué prioridad y qué consecuencias puede tener ignorarlo.',
-          bullets: [
-            'Responde búsquedas como “qué exige el RIPCI” o “frecuencia de revisiones PCI”.',
-            'Aclara conceptos técnicos con lenguaje entendible.',
-            'Ordena el contenido por obligación, impacto y siguiente paso.',
-          ],
-        },
-        {
-          title: 'Cómo funciona dentro del clúster SEO',
-          text:
-            'La página no compite con la landing de servicios; la alimenta. Desde aquí se enlaza a mantenimiento, adecuación, sectores y casos de uso, creando una relación natural entre información, autoridad y conversión.',
-          bullets: [
-            'Capta búsquedas informacionales de entrada al funnel.',
-            'Refuerza relevancia semántica del sitio completo.',
-            'Mejora la comprensión del usuario antes del contacto comercial.',
-          ],
-        },
-        {
-          title: 'Por qué es importante para captar negocio',
-          text:
-            'Muchos leads llegan cuando un responsable detecta una obligación, una duda de revisión o una carencia documental. Si la página le explica con claridad qué debe hacer, el contacto llega más maduro y con mayor urgencia real.',
-          bullets: [
-            'Reduce fricción entre duda técnica y acción comercial.',
-            'Refuerza credibilidad sin depender de claims grandilocuentes.',
-            'Permite cerrar con CTA consultivo y no agresivo.',
-          ],
-        },
-      ],
-    }}
-    useCases={{
-      title: 'Aplicaciones que conectan la normativa con necesidades reales de empresa',
-      intro:
-        'La mejor manera de evitar una página teórica es aterrizar cada bloque normativo en escenarios de uso reconocibles para el visitante.',
-      items: [
-        {
-          title: 'Preparar inspecciones y auditorías',
-          text:
-            'Usuarios que necesitan revisar si la instalación está al día, qué documentación conviene tener lista y dónde suelen aparecer las principales carencias.',
-          bullets: ['Checklists claros.', 'Prioridades de revisión.', 'Enlace directo a adecuación o mantenimiento.'],
-        },
-        {
-          title: 'Actualizar instalaciones existentes',
-          text:
-            'Empresas que ya tienen sistemas PCI pero no saben si siguen alineados con el marco aplicable, con el uso actual del edificio o con sus obligaciones de mantenimiento.',
-          bullets: ['Diagnóstico del punto de partida.', 'Acciones por fases.', 'Orden documental y técnico.'],
-        },
-        {
-          title: 'Resolver dudas antes de una ampliación o reforma',
-          text:
-            'La normativa se consulta mucho cuando cambia la actividad, la ocupación o la configuración de espacios. Aquí la página debe anticipar preguntas y riesgos.',
-          bullets: ['Impacto sobre diseño y adecuación.', 'Coordinación con proyecto.', 'Prevención de sobrecostes por corrección tardía.'],
-        },
-        {
-          title: 'Apoyar decisiones de dirección y facility',
-          text:
-            'No siempre lee un técnico especialista. Muchas veces la búsqueda nace en perfiles que necesitan una síntesis clara antes de activar al proveedor o al equipo interno.',
-          bullets: ['Lenguaje comprensible.', 'Consecuencias prácticas.', 'CTA orientado a revisión inicial.'],
-        },
-      ],
-    }}
-    visual={{
-      title: 'Un esquema normativo simple puede convertir una obligación difusa en un plan accionable',
-      text:
-        'La parte visual debe ayudar a entender la relación entre marco normativo, frecuencia de revisión, documentación e intervención recomendada, haciendo más tangible un contenido que suele percibirse como denso.',
-      image: '/landing/empresas-instalaciones-contra-incendios-2.webp',
-      alt: 'Técnico realizando revisión de una instalación contra incendios en un entorno empresarial',
-    }}
-    differentiators={{
-      title: 'La diferenciación no está en parecer más legalista, sino en ser más útil para actuar',
-      intro:
-        'Los contenidos que mejor sostienen captación y confianza comparten una idea: explicar la norma solo tiene valor cuando ayuda a decidir qué revisar, cómo priorizar y cuándo pedir soporte.',
-      items: [
-        {
-          title: 'Interpretación aplicada',
-          text: 'La norma se conecta con instalaciones reales, revisiones periódicas, evidencias y medidas concretas, no con definiciones abstractas sin contexto.',
-        },
-        {
-          title: 'Jerarquía muy escaneable',
-          text: 'H2 claros, H3 útiles, listas y FAQs evitan el efecto de “texto muro” típico de muchas páginas normativas.',
-        },
-        {
-          title: 'CTA consultiva',
-          text: 'La conversión funciona mejor cuando el cierre propone revisar cumplimiento o resolver una duda técnica en lugar de empujar una venta directa demasiado pronto.',
-        },
-        {
-          title: 'Enlace inteligente a negocio',
-          text: 'Cada bloque puede empujar al usuario hacia mantenimiento, adecuación o contenido sectorial según el problema que detecta en su búsqueda.',
-        },
-      ]
-    }}
-    proof={{
-      title: 'La autoridad se percibe cuando el contenido ordena decisiones y reduce ambigüedad',
-      intro:
-        'En este tipo de páginas la prueba social no pasa tanto por el tono comercial como por la capacidad de aclarar escenarios y convertir requisitos en próximos pasos verificables.',
-      items: [
-        {
-          highlight: 'Claridad',
-          title: 'Dudas resueltas en menos tiempo',
-          text: 'El visitante confía más cuando entiende desde arriba si la norma le afecta, qué revisar primero y cómo encaja eso en su realidad operativa.',
-        },
-        {
-          highlight: 'Acción',
-          title: 'Del contenido a la revisión',
-          text: 'Una buena página normativa deja preparada la transición natural hacia una revisión de cumplimiento, una adecuación o un plan de mantenimiento.',
-        },
-        {
-          highlight: 'Autoridad',
-          title: 'Profundidad sin fricción',
-          text: 'Explicar bien una obligación técnica, con ejemplos y FAQs, transmite mucha más solvencia que repetir mensajes genéricos de marca.',
-        },
-      ]
-    }}
-    comparison={{
-      title: 'Qué mejora esta estructura frente a una página normativa plana',
-      intro:
-        'El visitante necesita una lectura rápida al principio y profundidad después. Esa combinación suele rendir mejor que una página larga, densa y poco orientada a acción.',
-      rows: [
-        {
-          topic: 'Comprensión',
-          ours: 'Responde qué es, a quién afecta y qué hacer a continuación.',
-          alternative: 'Expone información de forma lineal y más difícil de priorizar.',
-        },
-        {
-          topic: 'SEO',
-          ours: 'Facilita FAQs, long tail y enlazado a servicios relacionados.',
-          alternative: 'Captura menos intención específica y reparte peor la autoridad interna.',
-        },
-        {
-          topic: 'Conversión',
-          ours: 'Cierra con una acción consultiva coherente con la intención informacional.',
-          alternative: 'O no convierte o fuerza una venta demasiado directa.',
-        },
-      ]
-    }}
-    faqs={faqs}
-    finalCta={{
-      title: 'Convierte la normativa en una fuente de leads cualificados, no solo de visitas',
-      text: 'Si quieres traducir RIPCI, CTE y normas UNE a una arquitectura de contenidos útil y orientada a captación, podemos priorizar temas, clústeres y CTA para cada fase del funnel.',
-      primary: { href: '/contacto', label: 'Solicitar revisión de contenido normativo' },
-      secondary: { href: '/servicios', label: 'Ver servicios PCI' },
-    }}
-    related={{
-      title: 'Complementa la intención de búsqueda con páginas conectadas entre sí',
-      links: [
-        {
-          href: '/servicios',
-          label: 'Servicios PCI',
-          description: 'Lleva la duda normativa a una solución concreta de mantenimiento, instalación o adecuación.',
-        },
-        {
-          href: '/sectores',
-          label: 'Sectores',
-          description: 'Aterriza cómo cambia el cumplimiento según actividad, operativa y tipo de edificio.',
-        },
-        {
-          href: '/contacto',
-          label: 'Contacto',
-          description: 'Abre una vía directa para revisar una necesidad concreta de cumplimiento o documentación.',
-        },
-      ]
-    }}
-  />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <section class="container py-6 sm:py-8">
+    <div class="rounded-[2rem] border border-red-100 bg-white/95 p-6 shadow-sm sm:p-8 lg:p-10">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-500">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="transition hover:text-[#e1062c]">Inicio</a></li>
+          <li aria-hidden="true" class="text-red-300">/</li>
+          <li class="font-medium text-slate-700">Normativa</li>
+        </ol>
+      </nav>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
+        <div>
+          <p class="brand-eyebrow">Normativa PCI</p>
+          <h1 class="mt-3 max-w-4xl text-[1rem] font-extrabold tracking-tight text-slate-900 sm:text-[1.375rem] lg:text-[2.125rem] lg:leading-[1.08]">
+            Normativa PCI explicada como una página interior: más clara, más útil y más orientada a decidir qué hacer.
+          </h1>
+          <p class="mt-4 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg sm:leading-8">
+            Hemos replanteado esta sección siguiendo los patrones que mejor resuelven la intención de búsqueda en el benchmark:
+            menos bloque legal abstracto, más contexto práctico. Aquí el visitante debe entender qué marcos normativos
+            afectan con más frecuencia a su instalación, qué implicaciones tienen sobre mantenimiento, adecuación o
+            inspecciones y cuándo conviene pasar de la lectura a una revisión técnica concreta.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/contacto" class="brand-button">Solicitar revisión normativa</a>
+            <a href="/servicios" class="rounded-full border border-red-200 px-5 py-2.5 text-sm font-semibold text-[#e1062c] transition hover:bg-red-50">Ver servicios PCI</a>
+          </div>
+        </div>
+
+        <aside class="rounded-[1.75rem] border border-red-100 bg-red-50/70 p-5">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">En esta página</p>
+          <div class="mt-4 space-y-4 text-sm leading-6 text-slate-700">
+            <div>
+              <p class="font-semibold text-slate-900">Para quién</p>
+              <p class="mt-1">Empresas, mantenimiento, prevención, facility managers y responsables técnicos que necesitan interpretar obligaciones PCI sin perderse en lenguaje excesivamente jurídico.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-900">Qué aporta</p>
+              <p class="mt-1">Una lectura más accionable para enlazar normativa, estado de la instalación y siguiente paso razonable.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12 sm:pb-16">
+    <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+      <div>
+        <p class="brand-eyebrow">Marcos clave</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          La normativa que más condiciona las decisiones PCI no se consulta para “saber más”, sino para actuar mejor.
+        </h2>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
+          Cuando se analiza la competencia, se ve con claridad que las páginas más útiles son las que ayudan a conectar
+          RIPCI, CTE DB-SI y normas UNE con situaciones reales de empresa. El valor no está en reproducir artículos ni
+          en acumular tecnicismos, sino en ordenar la información para que el usuario pueda identificar qué parte le
+          afecta, qué riesgo existe si no se atiende y qué intervención puede ser necesaria.
+        </p>
+        <div class="mt-8 grid gap-4">
+          {focusAreas.map((item) => (
+            <article class="brand-card">
+              <h3 class="text-xl font-bold text-slate-900">{item.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-700">{item.description}</p>
+              <ul class="mt-4 grid gap-2 text-sm text-slate-700">
+                {item.bullets.map((bullet) => (
+                  <li class="flex gap-3">
+                    <span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-100 text-[11px] font-bold text-[#b40422]">✓</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-6 lg:sticky lg:top-24">
+        <div class="overflow-hidden rounded-[2rem] border border-red-100 bg-white shadow-sm">
+          <img
+            src="/landing/empresas-instalaciones-contra-incendios-2.webp"
+            alt="Técnico revisando una instalación de protección contra incendios en un entorno empresarial"
+            class="h-full min-h-[280px] w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="rounded-[2rem] border border-red-100 bg-red-50/70 p-6">
+          <h3 class="text-lg font-bold text-slate-900">Qué debe dejar claro esta sección</h3>
+          <ul class="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
+            <li class="rounded-2xl bg-white p-4 shadow-sm">Qué normas se consultan con más frecuencia antes de una inspección o una adecuación.</li>
+            <li class="rounded-2xl bg-white p-4 shadow-sm">Cómo impacta cada marco en mantenimiento, documentación y operativa.</li>
+            <li class="rounded-2xl bg-white p-4 shadow-sm">Por qué interpretar bien la norma evita retrasos, sobrecostes y correcciones tardías.</li>
+            <li class="rounded-2xl bg-white p-4 shadow-sm">Cuándo tiene sentido pasar de la duda normativa a una revisión técnica del caso concreto.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12 sm:pb-16">
+    <div class="rounded-[2rem] border border-red-100 bg-red-50/60 p-8">
+      <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div class="overflow-hidden rounded-[1.5rem] border border-red-100 bg-white shadow-sm">
+          <img
+            src="/landing/importancia-plan-autoproteccion.webp"
+            alt="Equipo técnico revisando documentación y planificación de protección contra incendios"
+            class="h-full min-h-[320px] w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p class="brand-eyebrow">Enfoque benchmark</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Una buena página de normativa convierte información compleja en criterio de actuación para la empresa.
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-700">
+            El benchmark deja una idea clara: el contenido normativo funciona mejor cuando acompaña la lectura con más
+            contexto, más interpretación y más conexión con necesidades reales. Por eso esta sección no se limita a
+            resumir marcos regulatorios, sino que explica cómo debe usarse la información para decidir si toca revisar,
+            adecuar, mantener o regularizar una instalación PCI.
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            {benchmarkInsights.map((item) => (
+              <article class="brand-card h-full">
+                <h3 class="text-lg font-bold text-slate-900">{item.title}</h3>
+                <p class="mt-3 text-sm leading-6 text-slate-700">{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <div class="mt-8 grid gap-4">
+            {actionBlocks.map((item) => (
+              <article class="rounded-2xl border border-red-100 bg-white p-5 shadow-sm">
+                <h3 class="text-base font-bold text-slate-900">{item.title}</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-700">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-16 sm:pb-24">
+    <div class="rounded-[2rem] bg-[#141414] px-8 py-10 text-white shadow-xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-red-200">Contacto</p>
+      <h2 class="mt-4 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Si necesitas interpretar la normativa PCI con foco práctico, te ayudamos a revisar tu caso y priorizar el siguiente paso.
+      </h2>
+      <p class="mt-5 max-w-2xl text-base leading-7 text-slate-300">
+        Cuéntanos si estás preparando una inspección, revisando una instalación existente, afrontando una reforma o
+        intentando aclarar qué obligaciones normativas afectan a tu actividad. Te orientaremos para convertir esa duda
+        en una actuación técnica realista y bien enfocada.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contacto" class="brand-button">Hablar con un técnico</a>
+        <a href="/servicios" class="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10">Ver servicios relacionados</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
