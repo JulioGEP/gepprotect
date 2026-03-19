@@ -120,7 +120,6 @@ La mejor web para captación no debe copiar a una sola empresa; debe combinar:
   - `/normativa/ripci-explicado`
   - `/normativa/cte-seguridad-incendio`
   - `/normativa/unes-clave-pci`
-- `/delegaciones/` + páginas locales por ciudad/provincia.
 - `/casos-de-exito/`.
 - `/contacto/`.
 
