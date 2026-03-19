@@ -1,34 +1,389 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageDraft from '../components/PageDraft.astro';
+
+const benchmarkInsights = [
+  {
+    source: 'Desautel España y Eurofesa',
+    takeaway: 'La mejor conversión aparece cuando la oferta es clara, específica y visible desde el primer scroll.',
+  },
+  {
+    source: 'Tecnifuego y Cepreven',
+    takeaway: 'La autoridad técnica y la referencia normativa elevan la confianza y reducen objeciones antes del contacto.',
+  },
+  {
+    source: 'PCI Seguridad y Grupo Profuego',
+    takeaway: 'Los CTA directos y el lenguaje comercial orientado a servicio aceleran la generación de oportunidades.',
+  },
+];
+
+const serviceCards = [
+  {
+    title: 'Ingeniería e instalación PCI',
+    description:
+      'Diseñamos e implantamos sistemas de detección, alarma, extinción y señalización adaptados al uso del edificio, a la actividad y al nivel de riesgo para que la instalación nazca bien resuelta desde el principio.',
+    bullets: [
+      'Proyectos y dimensionamiento técnico de sistemas PCI.',
+      'Implantación coordinada para obra nueva, reforma o ampliación.',
+      'Puesta en marcha orientada a cumplimiento y operatividad.',
+    ],
+  },
+  {
+    title: 'Mantenimiento preventivo y correctivo',
+    description:
+      'Planificamos revisiones, pruebas funcionales, sustituciones y actuaciones correctivas para mantener la instalación disponible, documentada y preparada ante inspecciones o incidencias reales.',
+    bullets: [
+      'Programas de mantenimiento periódicos con trazabilidad.',
+      'Detección de desviaciones antes de que se conviertan en riesgo.',
+      'Soporte técnico y documental para responsables de mantenimiento.',
+    ],
+  },
+  {
+    title: 'Adecuación normativa y regularización documental',
+    description:
+      'Auditamos el estado de la instalación, priorizamos actuaciones y ordenamos la documentación para que la empresa pueda demostrar el cumplimiento con un criterio técnico claro y accionable.',
+    bullets: [
+      'Revisión del punto de partida y plan de adecuación.',
+      'Acompañamiento para inspecciones, auditorías y actualizaciones.',
+      'Informes, registros y evidencias orientadas a control interno.',
+    ],
+  },
+];
+
+const systemBlocks = [
+  {
+    title: 'Sistemas de detección y alarma de incendios',
+    text: 'Instalamos y mantenemos soluciones de detección para identificar incidentes con rapidez, activar protocolos y mejorar la capacidad de respuesta de las personas y del edificio.',
+  },
+  {
+    title: 'Extinción automática y manual',
+    text: 'Integramos soluciones de extinción adaptadas al riesgo protegido para contener el incendio, limitar daños y dar soporte a la continuidad operativa.',
+  },
+  {
+    title: 'BIES, hidrantes y abastecimiento',
+    text: 'Revisamos y mantenemos la red hidráulica de PCI para asegurar disponibilidad, presión y fiabilidad cuando la instalación tiene que responder.',
+  },
+  {
+    title: 'Señalización, evacuación y alumbrado',
+    text: 'Ayudamos a que la instalación sea más comprensible y accionable en emergencia mediante señalización y apoyo a la evacuación coherentes con el uso del espacio.',
+  },
+];
+
+const reasons = [
+  {
+    title: 'Orientado a intención de búsqueda real',
+    text: 'Respondemos a lo que un responsable técnico o de gerencia necesita cuando busca una empresa PCI: instalar, mantener, corregir, auditar o preparar una inspección.',
+  },
+  {
+    title: 'Pensado para reducir fricción comercial',
+    text: 'La página prioriza claridad, confianza y siguientes pasos para facilitar una decisión rápida sin sacrificar rigor técnico.',
+  },
+  {
+    title: 'Preparado para escalar SEO',
+    text: 'Cada bloque está redactado para poder evolucionar en futuras landings específicas de servicio, sector o ubicación sin rehacer la arquitectura.',
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Análisis técnico inicial',
+    text: 'Revisamos la instalación, el uso del edificio, los riesgos y la situación documental para detectar prioridades reales.',
+  },
+  {
+    step: '02',
+    title: 'Propuesta clara y accionable',
+    text: 'Definimos alcance, prioridades, tiempos y líneas de servicio para que sepas qué se hace, por qué y con qué impacto.',
+  },
+  {
+    step: '03',
+    title: 'Ejecución, mantenimiento y seguimiento',
+    text: 'Implantamos, revisamos y documentamos cada actuación para que la protección contra incendios se mantenga operativa en el tiempo.',
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Qué incluye el servicio PCI de GEP Protect?',
+    answer:
+      'Incluye ingeniería e instalación, mantenimiento preventivo y correctivo, adecuación normativa y soporte documental para que la empresa pueda prevenir, cumplir y actuar con mayor control.',
+  },
+  {
+    question: '¿Trabajáis solo instalaciones nuevas?',
+    answer:
+      'No. También intervenimos sobre instalaciones existentes que necesitan actualización, regularización, mejora de mantenimiento o apoyo ante inspecciones y auditorías.',
+  },
+  {
+    question: '¿Qué tipo de empresas suelen solicitar este servicio?',
+    answer:
+      'Principalmente industria, logística, retail, hoteles, oficinas, edificios terciarios y espacios con alta exigencia operativa o documental en protección contra incendios.',
+  },
+  {
+    question: '¿Cómo se solicita una revisión o propuesta?',
+    answer:
+      'Puedes pedir una visita técnica o una valoración inicial desde contacto. A partir de ahí, se revisa el contexto, se priorizan necesidades y se plantea un siguiente paso concreto.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: 'https://gepprotect.netlify.app/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Servicios',
+      item: 'https://gepprotect.netlify.app/servicios/',
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Servicios PCI | Instalación, mantenimiento y soluciones técnicas"
-  description="Borrador de la página de Servicios de GEP Protect, orientada a intención transaccional en protección contra incendios."
+  title="Servicios PCI | Instalación, mantenimiento y adecuación normativa"
+  description="Instalación, mantenimiento y adecuación normativa PCI para empresas que necesitan cumplir, reducir riesgo y responder con rapidez ante inspecciones o incidencias."
 >
-  <PageDraft
-    eyebrow="Servicios"
-    title="Servicios PCI orientados a cumplimiento, continuidad y respuesta rápida"
-    summary="Esta página explica el catálogo de servicios de GEP Protect con enfoque comercial y técnico. Debe ordenar las soluciones por intención de compra para que cada servicio pueda escalar después como landing específica SEO."
-    focus="El foco principal es captar búsquedas transaccionales tipo “mantenimiento PCI”, “instalación contra incendios”, “sistemas de detección” o “empresa PCI en [ciudad]”, alineando cada bloque con una futura URL dedicada."
-    sections={[
-      {
-        title: 'Arquitectura de servicios',
-        text: 'Presentación de líneas clave: detección, extinción automática, BIES/hidrantes, señalización y mantenimiento preventivo-correctivo, con mini-resumen de problema que resuelve cada una.',
-      },
-      {
-        title: 'Enfoque por beneficio de negocio',
-        text: 'Cada servicio debe conectar con impacto real: menor riesgo operativo, cumplimiento auditado, reducción de incidencias y trazabilidad documental para inspecciones.',
-      },
-      {
-        title: 'Contenido SEO recomendado',
-        text: 'Añadir FAQs por servicio, tiempos de actuación, normativa aplicable y zonas de cobertura. Preparado para enlazar internamente con Sector, Normativa y Delegaciones.',
-      },
-      {
-        title: 'CTAs de alta intención',
-        text: 'Llamadas a acción por bloque: “Quiero revisar mi mantenimiento”, “Solicitar visita técnica” y “Recibir propuesta” según fase del embudo.',
-      },
-    ]}
-  />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="container py-14 sm:py-20">
+    <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <div>
+        <p class="brand-eyebrow">Servicios PCI</p>
+        <h1 class="mt-4 max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+          Empresa PCI para instalar, mantener y adecuar tus sistemas contra incendios con criterio técnico.
+        </h1>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-700">
+          En GEP Protect ayudamos a empresas que necesitan una solución completa de protección contra incendios:
+          diseño e instalación, mantenimiento preventivo y correctivo, adecuación normativa y soporte documental.
+          El objetivo es simple: reducir riesgo, facilitar el cumplimiento y proteger la continuidad de tu actividad.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/contacto" class="brand-button">Solicitar revisión PCI</a>
+          <a href="/delegaciones" class="rounded-full border border-red-200 px-5 py-2.5 text-sm font-semibold text-[#e1062c] transition hover:bg-red-50">Ver cobertura</a>
+        </div>
+        <ul class="mt-8 grid gap-3 text-sm leading-6 text-slate-700 sm:grid-cols-3">
+          <li class="rounded-2xl border border-red-100 bg-white p-4 shadow-sm">
+            <strong class="block text-slate-900">Más claridad</strong>
+            Qué hacer, en qué orden y con qué prioridad técnica.
+          </li>
+          <li class="rounded-2xl border border-red-100 bg-white p-4 shadow-sm">
+            <strong class="block text-slate-900">Más control</strong>
+            Instalaciones y documentación preparadas para revisión.
+          </li>
+          <li class="rounded-2xl border border-red-100 bg-white p-4 shadow-sm">
+            <strong class="block text-slate-900">Más continuidad</strong>
+            Menos incidencias y mejor capacidad de respuesta.
+          </li>
+        </ul>
+      </div>
+
+      <aside class="rounded-[2rem] border border-dashed border-red-300 bg-white p-6 shadow-sm">
+        <div class="flex h-[320px] items-center justify-center rounded-[1.5rem] border border-dashed border-red-300 bg-red-50/60 text-center">
+          <div class="max-w-xs">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b40422]">Espacio para imagen hero</p>
+            <p class="mt-3 text-base font-bold text-slate-900">Técnico PCI realizando revisión en instalación industrial</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Dimensión recomendada: <strong>1600 × 900 px</strong> · Formato recomendado: WebP/AVIF · Encuadre horizontal con espacio negativo lateral para no competir con el titular.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="rounded-[2rem] border border-red-100 bg-white p-8 shadow-sm">
+      <div class="max-w-3xl">
+        <p class="brand-eyebrow">Benchmark aplicado</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Qué hemos tomado de las webs PCI mejor posicionadas para convertir esta página en una landing más competitiva.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-slate-700">
+          Esta propuesta combina la autoridad técnica detectada en Tecnifuego y Cepreven, la claridad comercial de Desautel España y Eurofesa, y el enfoque directo a captación visto en PCI Seguridad y Grupo Profuego.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        {benchmarkInsights.map((item) => (
+          <article class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">{item.source}</p>
+            <p class="mt-3 text-sm leading-6 text-slate-700">{item.takeaway}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-start">
+      <div>
+        <p class="brand-eyebrow">Qué hacemos</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Servicios de protección contra incendios pensados para responder a una necesidad real de negocio.
+        </h2>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
+          Cuando una empresa busca <strong>instalación PCI</strong>, <strong>mantenimiento contra incendios</strong> o <strong>adecuación normativa</strong>, normalmente no busca solo un proveedor: busca una respuesta fiable, rápida y bien documentada. Por eso estructuramos el servicio en líneas claras y orientadas a decisión.
+        </p>
+        <div class="mt-8 grid gap-4">
+          {serviceCards.map((service) => (
+            <article class="brand-card">
+              <h3 class="text-xl font-bold text-slate-900">{service.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
+              <ul class="mt-4 grid gap-2 text-sm text-slate-700">
+                {service.bullets.map((bullet) => (
+                  <li class="flex gap-3">
+                    <span class="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-100 text-[11px] font-bold text-[#b40422]">✓</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="rounded-[2rem] border border-dashed border-red-300 bg-white p-6 shadow-sm">
+          <div class="flex h-[260px] items-center justify-center rounded-[1.5rem] border border-dashed border-red-300 bg-red-50/60 text-center">
+            <div class="max-w-xs">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b40422]">Espacio para imagen de servicios</p>
+              <p class="mt-3 text-base font-bold text-slate-900">Instalación de sistema de detección o extinción en entorno terciario o industrial</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Dimensión recomendada: <strong>1200 × 900 px</strong> · Ratio 4:3 · Plano medio que muestre equipo, técnico y contexto real.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-[2rem] border border-red-100 bg-red-50/60 p-6">
+          <h3 class="text-lg font-bold text-slate-900">Intención de búsqueda que atacamos en esta página</h3>
+          <ul class="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
+            <li class="rounded-2xl bg-white p-4 shadow-sm">empresa PCI</li>
+            <li class="rounded-2xl bg-white p-4 shadow-sm">instalación contra incendios</li>
+            <li class="rounded-2xl bg-white p-4 shadow-sm">mantenimiento PCI</li>
+            <li class="rounded-2xl bg-white p-4 shadow-sm">sistemas de detección y extinción de incendios</li>
+            <li class="rounded-2xl bg-white p-4 shadow-sm">adecuación normativa RIPCI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="rounded-[2rem] border border-red-100 bg-red-50/60 p-8">
+      <div class="max-w-3xl">
+        <p class="brand-eyebrow">Sistemas y soluciones</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Un único partner PCI para cubrir sistemas críticos y mantenimiento continuado.
+        </h2>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {systemBlocks.map((block) => (
+          <article class="brand-card">
+            <h3 class="text-lg font-bold text-slate-900">{block.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-700">{block.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div class="rounded-[2rem] border border-dashed border-red-300 bg-white p-6 shadow-sm">
+        <div class="flex h-[320px] items-center justify-center rounded-[1.5rem] border border-dashed border-red-300 bg-red-50/60 text-center">
+          <div class="max-w-xs">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b40422]">Espacio para imagen de mantenimiento</p>
+            <p class="mt-3 text-base font-bold text-slate-900">Revisión técnica, checklist o prueba funcional sobre equipos PCI</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Dimensión recomendada: <strong>1400 × 1000 px</strong> · Ratio 7:5 · Mostrar interacción real con equipos para reforzar credibilidad.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="brand-eyebrow">Por qué esta página convierte mejor</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          El contenido responde a dudas comerciales y técnicas antes de que el usuario tenga que pedir una llamada.
+        </h2>
+        <div class="mt-8 grid gap-4">
+          {reasons.map((reason) => (
+            <article class="brand-card">
+              <h3 class="text-lg font-bold text-slate-900">{reason.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-700">{reason.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="rounded-[2rem] border border-red-100 bg-white p-8 shadow-sm">
+      <div class="max-w-3xl">
+        <p class="brand-eyebrow">Cómo trabajamos</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Un proceso simple para pasar de la incertidumbre a un plan PCI ejecutable.
+        </h2>
+      </div>
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        {process.map((item) => (
+          <article class="rounded-2xl border border-slate-200 p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">Paso {item.step}</p>
+            <h3 class="mt-3 text-lg font-bold text-slate-900">{item.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-700">{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-14 sm:pb-20">
+    <div class="rounded-[2rem] border border-red-100 bg-white p-8 shadow-sm">
+      <div class="max-w-3xl">
+        <p class="brand-eyebrow">Preguntas frecuentes</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Respuestas rápidas para quien está comparando empresas PCI o preparando una decisión interna.
+        </h2>
+      </div>
+      <div class="mt-8 grid gap-4 lg:grid-cols-2">
+        {faqs.map((faq) => (
+          <article class="rounded-2xl border border-slate-200 p-5">
+            <h3 class="text-base font-bold text-slate-900">{faq.question}</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-700">{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-16 sm:pb-24">
+    <div class="rounded-[2rem] bg-[#141414] px-8 py-10 text-white shadow-xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-red-200">Solicitar propuesta</p>
+      <h2 class="mt-4 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Si necesitas una empresa de protección contra incendios que combine ejecución, mantenimiento y soporte documental, hablemos.
+      </h2>
+      <p class="mt-5 max-w-2xl text-base leading-7 text-slate-300">
+        Cuéntanos si necesitas instalar, revisar, corregir o adecuar tu instalación PCI. Te ayudaremos a ordenar prioridades y a definir el siguiente paso con criterio técnico y enfoque práctico.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contacto" class="brand-button">Solicitar revisión PCI</a>
+        <a href="/delegaciones" class="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10">Ver cobertura y delegaciones</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

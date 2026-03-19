@@ -20,6 +20,7 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/png" href="/GEP_Logo_Icono_ROJO.png" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <title>{title}</title>
+    <slot name="head" />
   </head>
   <body>
     <Nav />
