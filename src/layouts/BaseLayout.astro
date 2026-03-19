@@ -18,12 +18,6 @@ const footerLinks = [
   { href: '/contacto', label: 'Contacto' },
 ];
 
-const footerKeywords = [
-  'Instalación PCI para empresas',
-  'Mantenimiento de sistemas contra incendios',
-  'Adecuación RIPCI y soporte documental',
-  'Soluciones PCI por sector y delegación',
-];
 ---
 
 <!doctype html>
@@ -44,7 +38,7 @@ const footerKeywords = [
       <slot />
     </main>
     <footer class="border-t border-red-100 bg-white">
-      <div class="container grid gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr]">
+      <div class="container grid gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#b40422]">GEP Protect</p>
           <h2 class="mt-4 text-2xl font-extrabold tracking-tight text-slate-900">Protección contra incendios para empresas con foco en claridad, cumplimiento y continuidad.</h2>
@@ -54,21 +48,12 @@ const footerKeywords = [
         </div>
 
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">Enlaces clave</h3>
+          <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">Menu</h3>
           <ul class="mt-4 grid gap-3 text-sm text-slate-600">
             {footerLinks.map((link) => (
               <li>
                 <a href={link.href} class="transition hover:text-[#e1062c]">{link.label}</a>
               </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">Keywords secundarias</h3>
-          <ul class="mt-4 grid gap-3 text-sm text-slate-600">
-            {footerKeywords.map((keyword) => (
-              <li class="rounded-2xl border border-red-100 bg-red-50/60 px-4 py-3">{keyword}</li>
             ))}
           </ul>
         </div>
