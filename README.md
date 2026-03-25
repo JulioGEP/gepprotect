@@ -19,3 +19,15 @@ Borrador inicial de la nueva web pública de **GEP Protect** construida con **As
 - `/contacto`
 
 Contenido en modo borrador, orientado por intención de búsqueda y preparado para escalar arquitectura SEO.
+
+## Sincronización WooCommerce (reporting)
+
+Se añadió la página `/reporting/woocommerce_compras` con un botón **Actualizar** que llama a la función `/.netlify/functions/woocommerce-sync`.
+
+Variables de entorno necesarias en Netlify:
+
+- `WOOCOMMERCE_BASE_URL` (ej: `https://tu-tienda.com`)
+- `CLAVE_CLIENTE_WC`
+- `CLAVE_SECRETA_WC`
+
+La sincronización incorpora únicamente pedidos `completed` / `completado` con fecha igual o posterior al `2026-01-01`.
