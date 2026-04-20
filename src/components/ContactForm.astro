@@ -1,0 +1,36 @@
+---
+interface Props { servicePreset?: string }
+const { servicePreset = '' } = Astro.props;
+---
+<form class="bg-white border rounded-xl p-6 space-y-4" data-contact-form>
+  <div class="grid md:grid-cols-2 gap-4">
+    <label class="block">Nombre *<input required name="nombre" class="mt-1 w-full border rounded p-2" /></label>
+    <label class="block">Empresa<input name="empresa" class="mt-1 w-full border rounded p-2" /></label>
+    <label class="block">Servicio *
+      <select name="servicio" required class="mt-1 w-full border rounded p-2">
+        <option value="">Selecciona un servicio</option>
+        <option value="deteccion-incendios" selected={servicePreset==='deteccion-incendios'}>Detección de incendios</option>
+        <option value="extincion-automatica" selected={servicePreset==='extincion-automatica'}>Extinción automática</option>
+        <option value="mantenimiento-pci" selected={servicePreset==='mantenimiento-pci'}>Mantenimiento PCI</option>
+        <option value="bies-hidrantes" selected={servicePreset==='bies-hidrantes'}>BIEs e hidrantes</option>
+        <option value="senalizacion-evacuacion" selected={servicePreset==='senalizacion-evacuacion'}>Señalización y evacuación</option>
+      </select>
+    </label>
+    <label class="block">Teléfono *<input required name="telefono" type="tel" class="mt-1 w-full border rounded p-2" /></label>
+  </div>
+  <label class="block">Mensaje<textarea name="mensaje" class="mt-1 w-full border rounded p-2" rows="4"></textarea></label>
+  <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
+  <button class="bg-primary text-white px-5 py-3 rounded-md">Solicitar presupuesto sin compromiso</button>
+  <p class="text-sm">Aceptas nuestra política de privacidad y el tratamiento de datos para responder tu solicitud.</p>
+</form>
+<script>
+  document.querySelectorAll('[data-contact-form]').forEach((formEl) => {
+    const form = formEl as HTMLFormElement;
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const fd = new FormData(form);
+      const response = await fetch('/api/contacto', { method: 'POST', body: fd });
+      if (response.ok) window.location.href = '/gracias/';
+    });
+  });
+</script>

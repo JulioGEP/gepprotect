@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import SectorCard from '../components/SectorCard.astro';
+import CasesPreview from '../components/CasesPreview.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { services, sectors } from '../data/site';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'GEP Protect',
+  url: 'https://www.gepprotect.es',
+  telephone: '+34 910 000 000',
+  email: 'info@gepprotect.es',
+  areaServed: ['Madrid', 'Castilla-La Mancha']
+};
+---
+<BaseLayout title="Instalación y mantenimiento PCI en Madrid | GEP Protect" description="Empresa instaladora PCI habilitada en Madrid. Cumple RIPCI y UNE con respuesta en menos de 24 h." schema={orgSchema}>
+  <Hero title="Instalación y mantenimiento PCI en Madrid, cumpliendo RIPCI y UNE, con respuesta en menos de 24 h" subtitle="Diseñamos, instalamos y mantenemos sistemas PCI con técnicos certificados y trazabilidad completa para auditorías." ctaText="Solicitar inspección PCI" ctaHref="/contacto/" />
+  <TrustBar />
+  <section class="py-12">
+    <h2 class="text-2xl font-bold">Servicios PCI</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      {services.map((service) => <ServiceCard icon={service.icon} title={service.title} description={service.short} href={`/servicios/${service.slug}/`} />)}
+    </div>
+    <a href="/servicios/" class="text-primary mt-4 inline-block">Ver hub de servicios</a>
+  </section>
+  <section class="py-12">
+    <h2 class="text-2xl font-bold">Sectores</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+      {sectors.map((sector) => <SectorCard icon={sector.icon} title={sector.title} description={sector.short} href={`/sectores/${sector.slug}/`} />)}
+    </div>
+  </section>
+  <section class="py-12">
+    <h2 class="text-2xl font-bold">Por qué GEP Protect</h2>
+    <div class="grid md:grid-cols-4 gap-3 mt-4">
+      <p class="bg-white border rounded p-4">Ingeniería y ejecución en un solo equipo.</p>
+      <p class="bg-white border rounded p-4">Documentación lista para inspección oficial.</p>
+      <p class="bg-white border rounded p-4">Guardias técnicas para incidencias urgentes.</p>
+      <p class="bg-white border rounded p-4">Cobertura Madrid y expansión regional.</p>
+    </div>
+  </section>
+  <CasesPreview />
+  <section class="py-12">
+    <h2 class="text-2xl font-bold">Normativa y autoridad</h2>
+    <div class="grid md:grid-cols-2 gap-4 mt-4">
+      <article class="bg-white border rounded p-5"><a class="font-semibold" href="/normativa/ripci-explicado/">RIPCI explicado para responsables de mantenimiento</a><p class="text-sm mt-2">8 min lectura · actualizado 2026</p></article>
+      <article class="bg-white border rounded p-5"><a class="font-semibold" href="/normativa/cte-seguridad-incendio/">CTE SI: requisitos clave en edificios de uso terciario</a><p class="text-sm mt-2">6 min lectura · actualizado 2026</p></article>
+    </div>
+  </section>
+  <section class="py-12" id="cta-final">
+    <h2 class="text-2xl font-bold">Solicita tu presupuesto</h2>
+    <p class="mt-2">Cuéntanos tu necesidad y te contactamos en menos de 24 h.</p>
+    <div class="mt-4"><ContactForm /></div>
+  </section>
+</BaseLayout>

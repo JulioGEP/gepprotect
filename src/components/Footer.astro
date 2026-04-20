@@ -1,0 +1,26 @@
+---
+import { company } from '../data/site';
+---
+<footer class="bg-secondary text-white mt-16">
+  <div class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+    <div>
+      <p class="font-bold text-lg">GEP Protect</p>
+      <p>Instalación, mantenimiento e inspección PCI.</p>
+    </div>
+    <div>
+      <p class="font-semibold">Menú</p>
+      <ul class="space-y-2 mt-3">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/sectores/industrial/">Sectores</a></li>
+        <li><a href="/normativa/ripci-explicado/">Normativa</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold">Contacto</p>
+      <p>{company.address}</p>
+      <p><a href={company.phoneHref}>{company.phone}</a></p>
+      <p><a href={`mailto:${company.email}`}>{company.email}</a></p>
+      <p class="mt-2 text-sm">CIF B00000000 · Política de privacidad</p>
+    </div>
+  </div>
+</footer>

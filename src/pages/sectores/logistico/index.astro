@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+const faqs = [
+  { question: '¿Qué servicio es prioritario en este sector?', answer: 'Depende del riesgo, pero siempre partimos de una auditoría y planificación por fases.' },
+  { question: '¿Podéis actuar sin parar la actividad?', answer: 'Sí, diseñamos intervenciones por tramos y horarios para minimizar impacto operativo.' },
+  { question: '¿Cómo se gestiona la documentación?', answer: 'Entregamos informes periódicos, actas y plan de mantenimiento para cumplimiento continuo.' }
+];
+const crumbs = [{ name: 'Inicio', href: '/' }, { name: 'Sectores', href: '/sectores/industrial/' }, { name: 'Protección contra incendios para naves logísticas', href: '/sectores/logistico/' }];
+---
+<BaseLayout title="Protección contra incendios para naves logísticas en Madrid | GEP Protect" description="Protección contra incendios para naves logísticas. Soluciones PCI adaptadas, cumplimiento normativo y soporte técnico en menos de 24 horas.">
+  <Breadcrumb items={crumbs} />
+  <h1 class="text-4xl font-bold">Protección contra incendios para naves logísticas</h1>
+  <section class="py-8">
+    <h2 class="text-2xl font-bold">Retos específicos del sector</h2>
+    <p class="mt-2">Gestión de evacuación, sectorización de riesgo y continuidad operativa con exigencia documental permanente.</p>
+  </section>
+  <section class="py-8">
+    <h2 class="text-2xl font-bold">Servicios recomendados</h2>
+    <div class="flex flex-wrap gap-4 mt-3 text-primary">
+      <a href="/servicios/deteccion-incendios/">Detección de incendios</a>
+      <a href="/servicios/mantenimiento-pci/">Mantenimiento PCI</a>
+      <a href="/servicios/bies-hidrantes/">BIEs e hidrantes</a>
+    </div>
+  </section>
+  <section class="py-8">
+    <h2 class="text-2xl font-bold">Normativa clave</h2>
+    <p class="mt-2">RIPCI, CTE SI y normas UNE aplicables según uso, ocupación y nivel de riesgo intrínseco.</p>
+    <a href="/normativa/unes-clave-pci/" class="text-primary">Ver normas UNE clave</a>
+  </section>
+  <section class="py-8">
+    <h2 class="text-2xl font-bold">Casos de éxito del sector</h2>
+    <p class="mt-2">Implementación por fases, mejora de tiempos de inspección y reducción de no conformidades.</p>
+    <a href="/casos-de-exito/" class="text-primary">Ver casos de éxito</a>
+  </section>
+  <FaqAccordion faqs={faqs} />
+  <section class="py-8"><ContactForm /></section>
+</BaseLayout>

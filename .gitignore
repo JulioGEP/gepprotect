@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.astro/
+
+# env files
+.env
+
+# logs
+npm-debug.log*
+
+# netlify local
+.netlify/

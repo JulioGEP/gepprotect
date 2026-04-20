@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+const crumbs = [{ name: 'Inicio', href: '/' }, { name: 'Casos de éxito', href: '/casos-de-exito/' }];
+---
+<BaseLayout title="Casos de éxito PCI en Madrid | GEP Protect" description="Proyectos PCI realizados en industria, logística, hoteles y comunidades con resultados medibles.">
+  <Breadcrumb items={crumbs} />
+  <h1 class="text-4xl font-bold">Casos de éxito de protección contra incendios</h1>
+  <div class="grid md:grid-cols-3 gap-4 mt-6">
+    <article class="bg-white border rounded p-5"><h2 class="font-semibold">Industria química</h2><p>Reto: riesgo alto. Solución: extinción automática por espuma. Resultado: auditoría superada al primer intento.</p></article>
+    <article class="bg-white border rounded p-5"><h2 class="font-semibold">Centro logístico</h2><p>Reto: ampliación urgente. Solución: redistribución BIEs. Resultado: apertura en plazo sin incidencias.</p></article>
+    <article class="bg-white border rounded p-5"><h2 class="font-semibold">Cadena hotelera</h2><p>Reto: actualización señalización. Solución: renovación integral de vías de evacuación. Resultado: mejora en simulacros.</p></article>
+  </div>
+</BaseLayout>

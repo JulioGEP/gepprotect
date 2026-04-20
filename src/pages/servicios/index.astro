@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { services } from '../../data/site';
+const crumbs = [{ name: 'Inicio', href: '/' }, { name: 'Servicios', href: '/servicios/' }];
+---
+<BaseLayout title="Servicios PCI en Madrid | GEP Protect" description="Servicios PCI para industria, logística, hoteles y comunidades. Instalación, mantenimiento y adecuación normativa.">
+  <Breadcrumb items={crumbs} />
+  <h1 class="text-4xl font-bold">Servicios de protección contra incendios en Madrid</h1>
+  <p class="mt-3">Selecciona el servicio PCI que necesitas y recibe una propuesta técnica sin compromiso.</p>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+    {services.map((service) => <ServiceCard icon={service.icon} title={service.title} description={service.short} href={`/servicios/${service.slug}/`} />)}
+  </div>
+</BaseLayout>
