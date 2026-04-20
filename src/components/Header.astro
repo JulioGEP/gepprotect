@@ -1,0 +1,21 @@
+---
+import { company } from '../data/site';
+---
+<header class="bg-white sticky top-0 z-50 border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="font-bold text-xl text-secondary">GEP Protect</a>
+    <nav class="hidden md:flex gap-6" aria-label="Principal">
+      <a href="/servicios/">Servicios</a>
+      <a href="/sectores/industrial/">Sectores</a>
+      <a href="/normativa/ripci-explicado/">Normativa</a>
+      <a href="/casos-de-exito/">Casos de éxito</a>
+      <a href="/contacto/">Contacto</a>
+    </nav>
+    <a href="/contacto/" class="hidden md:inline-flex bg-primary text-white px-4 py-2 rounded-md">Solicitar inspección PCI</a>
+    <button class="md:hidden border rounded p-2" aria-label="Abrir menú">☰</button>
+  </div>
+  <div class="md:hidden fixed bottom-0 inset-x-0 bg-white border-t p-3 flex gap-2">
+    <a href="/contacto/" class="flex-1 text-center bg-primary text-white py-2 rounded-md min-h-11">Solicitar</a>
+    <a href={company.phoneHref} class="flex-1 text-center border border-secondary py-2 rounded-md min-h-11">Llamar</a>
+  </div>
+</header>

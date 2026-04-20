@@ -1,0 +1,15 @@
+---
+import { company } from '../data/site';
+interface Props { title: string; subtitle: string; ctaText: string; ctaHref: string }
+const { title, subtitle, ctaText, ctaHref } = Astro.props;
+---
+<section class="bg-gradient-to-br from-white to-red-50 py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight max-w-4xl">{title}</h1>
+    <p class="mt-4 text-lg max-w-3xl">{subtitle}</p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a href={ctaHref} class="bg-primary text-white px-5 py-3 rounded-md min-h-11 inline-flex items-center">{ctaText}</a>
+      <a href={company.phoneHref} class="underline underline-offset-4 min-h-11 inline-flex items-center">Llamar ahora</a>
+    </div>
+  </div>
+</section>

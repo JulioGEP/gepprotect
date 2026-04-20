@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CasesPreview from '../../../components/CasesPreview.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const faqs = [
+  { question: '¿Cuál es el plazo de ejecución habitual?', answer: 'La mayoría de proyectos se planifican entre 1 y 4 semanas según complejidad.' },
+  { question: '¿Incluís legalización y documentación?', answer: 'Sí, entregamos certificados, actas y documentación para auditoría e inspección.' },
+  { question: '¿Dáis cobertura fuera de Madrid?', answer: 'Sí, operamos en Madrid y ampliamos cobertura a Castilla-La Mancha.' }
+];
+const crumbs = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Servicios', href: '/servicios/' },
+  { name: 'Sistemas de extinción automática en Madrid', href: '/servicios/extincion-automatica/' }
+];
+---
+<BaseLayout title="Extinción automática en Madrid | GEP Protect" description="Diseño e instalación de sistemas de extinción automática con cálculo hidráulico y legalización completa.">
+  <Breadcrumb items={crumbs} />
+  <Hero title="Sistemas de extinción automática en Madrid" subtitle="Servicio técnico certificado RIPCI con planificación, ejecución y mantenimiento documentado." ctaText="Solicitar inspección PCI" ctaHref="/contacto/?servicio=extincion-automatica" />
+
+  <section class="py-10">
+    <h2 class="text-2xl font-bold">Qué incluye el servicio</h2>
+    <div class="grid md:grid-cols-3 gap-4 mt-4">
+      <article class="bg-white border rounded p-4">Diagnóstico inicial y propuesta técnica.</article>
+      <article class="bg-white border rounded p-4">Instalación con materiales homologados.</article>
+      <article class="bg-white border rounded p-4">Puesta en marcha y plan de mantenimiento.</article>
+    </div>
+  </section>
+
+  <section class="py-10 grid md:grid-cols-2 gap-6">
+    <article>
+      <h2 class="text-2xl font-bold">Normativa aplicable</h2>
+      <p class="mt-2">Aplicamos RIPCI, CTE SI y normas UNE específicas según riesgo y uso del edificio.</p>
+      <a class="text-primary" href="/normativa/ripci-explicado/">Ver normativa PCI</a>
+    </article>
+    <article>
+      <h2 class="text-2xl font-bold">Sectores donde aplica</h2>
+      <p class="mt-2">Industrial, logístico, comunidades y hoteles con requisitos de continuidad y seguridad.</p>
+      <a class="text-primary" href="/sectores/industrial/">Ver sectores</a>
+    </article>
+  </section>
+
+  <section class="py-10">
+    <h2 class="text-2xl font-bold">Proceso de trabajo</h2>
+    <ol class="grid md:grid-cols-5 gap-3 mt-4">
+      <li class="bg-white border rounded p-3">1. Auditoría inicial</li>
+      <li class="bg-white border rounded p-3">2. Diseño técnico</li>
+      <li class="bg-white border rounded p-3">3. Planificación</li>
+      <li class="bg-white border rounded p-3">4. Ejecución</li>
+      <li class="bg-white border rounded p-3">5. Entrega documental</li>
+    </ol>
+  </section>
+
+  <FaqAccordion faqs={faqs} />
+
+  <section class="py-10">
+    <h2 class="text-2xl font-bold">Solicita una propuesta para sistemas de extinción automática en Madrid</h2>
+    <div class="mt-4"><ContactForm servicePreset="extincion-automatica" /></div>
+  </section>
+
+  <CasesPreview />
+
+  <section class="py-8">
+    <h2 class="text-xl font-semibold">También puede interesarte</h2>
+    <div class="flex flex-wrap gap-4 mt-3 text-primary">
+      <a href="/servicios/mantenimiento-pci/">Mantenimiento PCI</a>
+      <a href="/servicios/extincion-automatica/">Extinción automática</a>
+      <a href="/servicios/bies-hidrantes/">BIEs e hidrantes</a>
+    </div>
+  </section>
+</BaseLayout>

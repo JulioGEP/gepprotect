@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ContactForm from '../../components/ContactForm.astro';
+const crumbs = [{ name: 'Inicio', href: '/' }, { name: 'Contacto', href: '/contacto/' }];
+const selectedService = Astro.url.searchParams.get('servicio') ?? '';
+---
+<BaseLayout title="Contacto PCI en Madrid | GEP Protect" description="Solicita inspección o presupuesto PCI en Madrid. Te respondemos en menos de 24 horas.">
+  <Breadcrumb items={crumbs} />
+  <h1 class="text-4xl font-bold">Solicita una inspección PCI</h1>
+  <p class="mt-2">Cuéntanos tu proyecto y te asignaremos un técnico especializado.</p>
+  <div class="mt-6"><ContactForm servicePreset={selectedService} /></div>
+</BaseLayout>

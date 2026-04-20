@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+const crumbs = [{ name: 'Inicio', href: '/' }, { name: 'Normativa', href: '/normativa/ripci-explicado/' }, { name: 'RIPCI explicado: qué exige y cómo cumplirlo en 2026', href: '/normativa/ripci-explicado/' }];
+const faqs = [
+  { question: '¿A quién aplica esta norma?', answer: 'A titulares, mantenedores y responsables de seguridad según el tipo de instalación.' },
+  { question: '¿Cada cuánto debo revisar mi instalación?', answer: 'Depende del sistema, pero la frecuencia mínima viene marcada en RIPCI y UNE.' },
+  { question: '¿Qué pasa si no cumplo?', answer: 'Puede haber sanciones, cierre temporal y aumento de riesgo operativo y patrimonial.' }
+];
+---
+<BaseLayout title="RIPCI explicado: qué exige y cómo cumplirlo en 2026 | GEP Protect" description="Guía técnica sobre ripci explicado: qué exige y cómo cumplirlo en 2026 con resumen ejecutivo, obligaciones y acciones recomendadas.">
+  <Breadcrumb items={crumbs} />
+  <h1 class="text-4xl font-bold">RIPCI explicado: qué exige y cómo cumplirlo en 2026</h1>
+  <section class="py-8">
+    <h2 class="text-2xl font-bold">Resumen ejecutivo</h2>
+    <p class="mt-2">Te explicamos para quién aplica, qué exige y cómo implantar un plan de cumplimiento sin frenar la operación.</p>
+  </section>
+  <section class="py-8">
+    <h2 class="text-2xl font-bold">Contenido estructurado</h2>
+    <h3 class="font-semibold mt-3">Ámbito de aplicación</h3>
+    <p>Identificación de instalaciones afectadas y criterios de prioridad.</p>
+    <h3 class="font-semibold mt-3">Obligaciones documentales</h3>
+    <p>Actas, certificados y trazabilidad de mantenimientos preventivos y correctivos.</p>
+    <h3 class="font-semibold mt-3">Plan de implementación</h3>
+    <p>Calendario por fases para adaptar instalación, mantenimiento y formación.</p>
+  </section>
+  <section class="bg-white border rounded-xl p-6">
+    <p class="font-semibold">¿Necesitas cumplir esta normativa? Te ayudamos.</p>
+    <a href="/contacto/" class="text-primary">Solicitar asesoramiento PCI</a>
+  </section>
+  <section class="py-8"><FaqAccordion faqs={faqs} /></section>
+  <section class="py-8">
+    <h2 class="text-2xl font-bold">Servicios relacionados</h2>
+    <div class="flex flex-wrap gap-4 mt-3 text-primary">
+      <a href="/servicios/mantenimiento-pci/">Mantenimiento PCI</a>
+      <a href="/servicios/deteccion-incendios/">Detección de incendios</a>
+      <a href="/servicios/extincion-automatica/">Extinción automática</a>
+    </div>
+  </section>
+</BaseLayout>

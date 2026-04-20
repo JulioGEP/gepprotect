@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /gracias/
+Disallow: /*?*
+
+Sitemap: https://www.gepprotect.es/sitemap-index.xml
