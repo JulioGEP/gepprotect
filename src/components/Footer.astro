@@ -1,26 +1,50 @@
 ---
 import { company } from '../data/site';
 ---
-<footer class="bg-secondary text-white mt-16">
-  <div class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+<footer class="bg-[#0f0f10] text-white">
+  <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 py-14 md:grid-cols-4">
     <div>
-      <p class="font-bold text-lg">GEP Protect</p>
-      <p>Instalación, mantenimiento e inspección PCI.</p>
+      <p class="text-lg font-bold">GEP</p>
+      <p class="mt-3 text-sm text-zinc-300">Ingeniería de protección contra incendios, mantenimiento y cumplimiento normativo.</p>
     </div>
+
     <div>
-      <p class="font-semibold">Menú</p>
-      <ul class="space-y-2 mt-3">
-        <li><a href="/servicios/">Servicios</a></li>
-        <li><a href="/sectores/industrial/">Sectores</a></li>
-        <li><a href="/normativa/ripci-explicado/">Normativa</a></li>
+      <p class="text-sm font-semibold uppercase tracking-wide text-zinc-400">Servicios</p>
+      <ul class="mt-3 space-y-2 text-sm text-zinc-200">
+        <li><a href="/servicios/">Instalación PCI</a></li>
+        <li><a href="/servicios/mantenimiento-pci/">Mantenimiento</a></li>
+        <li><a href="/servicios/deteccion-incendios/">Detección</a></li>
+        <li><a href="/servicios/extincion-automatica/">Extinción</a></li>
       </ul>
     </div>
+
     <div>
-      <p class="font-semibold">Contacto</p>
-      <p>{company.address}</p>
-      <p><a href={company.phoneHref}>{company.phone}</a></p>
-      <p><a href={`mailto:${company.email}`}>{company.email}</a></p>
-      <p class="mt-2 text-sm">CIF B00000000 · Política de privacidad</p>
+      <p class="text-sm font-semibold uppercase tracking-wide text-zinc-400">Empresa</p>
+      <ul class="mt-3 space-y-2 text-sm text-zinc-200">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/casos-de-exito/">Casos de éxito</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-zinc-400">Contacto</p>
+      <ul class="mt-3 space-y-2 text-sm text-zinc-200">
+        <li>{company.address}</li>
+        <li><a href={company.phoneHref}>{company.phone}</a></li>
+        <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-zinc-400 md:flex-row md:items-center md:justify-between">
+      <p>© 2026 GEP Protect. Todos los derechos reservados.</p>
+      <div class="flex gap-4">
+        <a href="#">Aviso legal</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
     </div>
   </div>
 </footer>
