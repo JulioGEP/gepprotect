@@ -1,13 +1,13 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import netlify from '@astrojs/netlify';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://www.gepprotect.es',
   integrations: [sitemap()],
   output: 'server',
-  adapter: netlify(),
+  adapter: vercel(),
   vite: {
     plugins: [tailwindcss()]
   },
