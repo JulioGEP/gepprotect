@@ -1,0 +1,159 @@
+name: Export Figma Assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      figma_file_key:
+        description: 'Figma file key (from the URL)'
+        required: true
+        type: string
+      node_ids:
+        description: 'Comma-separated node IDs to export (leave empty for all)'
+        required: false
+        type: string
+      format:
+        description: 'Export format'
+        required: false
+        default: 'svg'
+        type: choice
+        options:
+          - svg
+          - png
+          - jpg
+          - pdf
+      scale:
+        description: 'Export scale (for raster formats)'
+        required: false
+        default: '1'
+        type: string
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  export-assets:
+    name: Export assets from Figma
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Export Figma assets
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+        run: |
+          FILE_KEY="${{ github.event.inputs.figma_file_key || vars.FIGMA_FILE_KEY }}"
+          FORMAT="${{ github.event.inputs.format || 'svg' }}"
+          SCALE="${{ github.event.inputs.scale || '1' }}"
+          NODE_IDS="${{ github.event.inputs.node_ids }}"
+
+          if [ -z "$FILE_KEY" ]; then
+            echo "Error: No Figma file key provided. Pass figma_file_key input or set FIGMA_FILE_KEY variable."
+            exit 1
+          fi
+
+          mkdir -p public/figma-assets
+
+          # Build query string for node IDs
+          if [ -n "$NODE_IDS" ]; then
+            IDS_PARAM="&ids=$(echo "$NODE_IDS" | sed 's/ //g')"
+          else
+            IDS_PARAM=""
+          fi
+
+          echo "Fetching export URLs from Figma API..."
+          RESPONSE=$(curl -sf \
+            -H "X-Figma-Token: $FIGMA_TOKEN" \
+            "https://api.figma.com/v1/images/${FILE_KEY}?format=${FORMAT}&scale=${SCALE}${IDS_PARAM}")
+
+          if [ $? -ne 0 ]; then
+            echo "Error: Failed to fetch export URLs from Figma."
+            exit 1
+          fi
+
+          echo "$RESPONSE" | node -e "
+            const data = JSON.parse(require('fs').readFileSync('/dev/stdin', 'utf8'));
+            if (data.err) { console.error('Figma error:', data.err); process.exit(1); }
+            const images = data.images || {};
+            const entries = Object.entries(images);
+            console.log('Found ' + entries.length + ' asset(s) to export.');
+            require('fs').writeFileSync('figma-image-urls.json', JSON.stringify(images, null, 2));
+          "
+
+          echo "Downloading assets..."
+          node -e "
+            const https = require('https');
+            const fs = require('fs');
+            const path = require('path');
+            const images = JSON.parse(fs.readFileSync('figma-image-urls.json', 'utf8'));
+            const format = process.env.FORMAT || 'svg';
+            const dir = 'public/figma-assets';
+
+            const download = (url, dest) => new Promise((resolve, reject) => {
+              const file = fs.createWriteStream(dest);
+              https.get(url, res => {
+                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+                  file.close();
+                  fs.unlinkSync(dest);
+                  download(res.headers.location, dest).then(resolve).catch(reject);
+                  return;
+                }
+                res.pipe(file);
+                file.on('finish', () => file.close(resolve));
+              }).on('error', err => { fs.unlinkSync(dest); reject(err); });
+            });
+
+            (async () => {
+              for (const [nodeId, url] of Object.entries(images)) {
+                if (!url) { console.log('Skipping ' + nodeId + ' (no URL)'); continue; }
+                const safeName = nodeId.replace(/[^a-zA-Z0-9_-]/g, '_');
+                const dest = path.join(dir, safeName + '.' + format);
+                console.log('Downloading ' + nodeId + ' -> ' + dest);
+                await download(url, dest);
+              }
+              console.log('All assets downloaded.');
+            })();
+          "
+          FORMAT="$FORMAT" node -
+
+          rm -f figma-image-urls.json
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/figma-assets/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and open PR
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="figma-assets/update-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH"
+          git commit -m "chore(assets): update Figma exports [skip ci]"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "chore(assets): update Figma exports" \
+            --body "Automated export of Figma assets. Triggered by workflow run [\`${{ github.run_id }}\`](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})." \
+            --base main \
+            --head "$BRANCH" \
+            --label "automated"
+
+      - name: No changes detected
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "No asset changes detected. Nothing to commit."
