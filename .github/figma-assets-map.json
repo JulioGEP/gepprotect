@@ -1,0 +1,17 @@
+{
+  "_readme": "Mapa hash → nombre final. Edita los valores si el orden no coincide tras la primera descarga. Borra esta clave '_readme' si causa problemas.",
+  "01b4e03d46a76d164c3010776a84a42f3dde3211": "hero-instalacion.jpg",
+  "1714578af261fdcf2a423c0217bc205439938365": "sector-industrial.jpg",
+  "311639e2be089fd18ba2ef03823d1d6c12b03640": "sector-logistico.jpg",
+  "41e4c8d5814066b9a2fdf416dfa0bb8e93674ce8": "sector-comunidades.jpg",
+  "4bfc31ff8a0c2326cf559914ad112f341883d859": "sector-hoteles.jpg",
+  "64fa91f3c5267234f26bd0e3cf6dac848aca8edb": "compliance-inspeccion.jpg",
+  "7095f762c14018f597147643abdc268a83b24d8e": "servicio-deteccion.jpg",
+  "8fc7b3897e356c8020e5e8319e6f8449fd803f32": "servicio-extincion.jpg",
+  "b150604d01e5158829a9cbf4931fb5161f922ad2": "servicio-mantenimiento.jpg",
+  "b9dd06041e3b33b20344865e2b803699c82e1430": "servicio-bies.jpg",
+  "bf997d8098debd2429bb8f86c9b95285b4846f5f": "servicio-senalizacion.jpg",
+  "cd0ef5add50604fb3f4b07a83d812299afd3ecf3": "asset-extra-1.jpg",
+  "d5fcb473436379f2985c779090566ff81bf9567f": "asset-extra-2.jpg",
+  "ef9b4d6129aed5f75c122d99b123bd7de1687a02": "asset-extra-3.jpg"
+}

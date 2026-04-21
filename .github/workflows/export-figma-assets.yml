@@ -1,0 +1,157 @@
+name: Export Figma Assets
+
+# Triggered manually from GitHub Actions → Run workflow
+on:
+  workflow_dispatch:
+    inputs:
+      file_key:
+        description: 'Figma file key (blank = default home design)'
+        required: false
+        default: '9MCmrDI1moLUa9qZhiYloC'
+
+# Prerequisite: add a repository secret named FIGMA_TOKEN
+# Settings → Secrets and variables → Actions → New repository secret
+# Value: your Figma Personal Access Token (figma.com → Account → Personal access tokens)
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # needed to commit images back to the repo
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Export images from Figma API
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+          FIGMA_FILE_KEY: ${{ inputs.file_key }}
+        run: |
+          set -euo pipefail
+          mkdir -p public/images
+
+          python3 << 'PYEOF'
+          import os, json, sys, urllib.request, urllib.error, mimetypes
+
+          TOKEN   = os.environ["FIGMA_TOKEN"]
+          FILEKEY = os.environ.get("FIGMA_FILE_KEY", "9MCmrDI1moLUa9qZhiYloC")
+          OUTDIR  = "public/images"
+          MAPFILE = ".github/figma-assets-map.json"
+          BASE    = "https://api.figma.com/v1"
+          HEADERS = {"X-FIGMA-TOKEN": TOKEN}
+
+          # ── helpers ────────────────────────────────────────────────────────────
+
+          def api(path):
+              req = urllib.request.Request(f"{BASE}{path}", headers=HEADERS)
+              try:
+                  with urllib.request.urlopen(req) as r:
+                      return json.loads(r.read())
+              except urllib.error.HTTPError as e:
+                  print(f"  ✗ Figma API {e.code} on {path}: {e.read().decode()[:300]}",
+                        file=sys.stderr)
+                  return {}
+
+          def fetch_binary(url, dest):
+              with urllib.request.urlopen(url) as r:
+                  with open(dest, "wb") as f:
+                      f.write(r.read())
+
+          def walk(node, predicate, result):
+              if predicate(node):
+                  result.append(node)
+              for child in node.get("children", []):
+                  walk(child, predicate, result)
+
+          # ── load optional name mapping ─────────────────────────────────────────
+          # .github/figma-assets-map.json  →  { "<hash>": "final-name.jpg", … }
+          mapping = {}
+          if os.path.exists(MAPFILE):
+              with open(MAPFILE) as f:
+                  mapping = json.load(f)
+              print(f"Loaded {len(mapping)} name mappings from {MAPFILE}")
+
+          # ── 1. image fills (/files/{key}/images) ──────────────────────────────
+          print("\n── Image fills ──────────────────────────────────────────────────")
+          resp   = api(f"/files/{FILEKEY}/images")
+          fills  = resp.get("meta", {}).get("images", {})
+          print(f"Found {len(fills)} image fills")
+
+          downloaded = {}
+          for img_hash, url in fills.items():
+              if not url:
+                  continue
+              name = mapping.get(img_hash)
+              dest = os.path.join(OUTDIR, name if name else f"{img_hash}.png")
+              print(f"  {img_hash[:8]}…  →  {os.path.basename(dest)}")
+              fetch_binary(url, dest)
+              downloaded[img_hash] = os.path.basename(dest)
+
+          # ── 2. SVG logo (node export) ──────────────────────────────────────────
+          print("\n── SVG / logo nodes ─────────────────────────────────────────────")
+          doc_resp = api(f"/files/{FILEKEY}")
+          doc_root = doc_resp.get("document", {})
+
+          logo_keywords = {"logo", "gep-protect", "brand", "logotype", "isotipo"}
+
+          logo_nodes = []
+          walk(
+              doc_root,
+              lambda n: bool(
+                  set(n.get("name", "").lower().split()) & logo_keywords
+                  and n.get("type") not in ("DOCUMENT", "CANVAS", "PAGE", "SECTION")
+              ),
+              logo_nodes,
+          )
+
+          if logo_nodes:
+              ids = ",".join(n["id"] for n in logo_nodes[:3])
+              svg_resp = api(
+                  f"/images/{FILEKEY}?ids={ids}&format=svg&svg_include_id=false"
+              )
+              for node_id, svg_url in (svg_resp.get("images") or {}).items():
+                  if svg_url:
+                      dest = os.path.join(OUTDIR, "gep-protect-logo.svg")
+                      print(f"  Exporting logo node {node_id[:8]}…  →  gep-protect-logo.svg")
+                      fetch_binary(svg_url, dest)
+                      break
+          else:
+              print("  No logo nodes found — skipping SVG export")
+
+          # ── 3. update / create mapping template ───────────────────────────────
+          unmapped = [h for h in downloaded if h not in mapping]
+          if unmapped:
+              template = {**mapping, **{h: f"{h}.png" for h in unmapped}}
+              os.makedirs(os.path.dirname(MAPFILE), exist_ok=True)
+              with open(MAPFILE, "w") as f:
+                  json.dump(template, f, indent=2)
+              print(f"\n⚠  {len(unmapped)} image(s) downloaded with hash names.")
+              print(f"   Edit {MAPFILE} to assign final names, then re-run the workflow.")
+              print(f"   Example: {{ \"01b4e03d…\": \"hero-instalacion.jpg\" }}")
+          else:
+              print(f"\n✅  All {len(downloaded)} image(s) saved with final names.")
+
+          # ── summary ────────────────────────────────────────────────────────────
+          print("\n── Summary ───────────────────────────────────────────────────────")
+          for h, name in downloaded.items():
+              mapped = "✓" if h in mapping else "?"
+              print(f"  [{mapped}]  {h[:8]}…  →  {name}")
+          PYEOF
+
+      - name: Commit and push assets
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add public/images/
+          # also stage the map file if it was created/updated
+          git add .github/figma-assets-map.json 2>/dev/null || true
+
+          if git diff --staged --quiet; then
+            echo "Assets already up to date — nothing to commit."
+          else
+            COUNT=$(git diff --staged --name-only | grep -c "public/images" || true)
+            git commit -m "chore(assets): sync ${COUNT} Figma image(s) to public/images [skip ci]"
+            git push origin HEAD
+          fi
